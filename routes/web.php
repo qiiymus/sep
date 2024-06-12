@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\ReportController;
 use app\Http\Controllers\TimetableController;
+use App\Http\Controllers\BulletinController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,3 +36,6 @@ Route::get('/KAViewPR',[ReportController::class,'KAViewPR'])->name('KAViewPR');
 Route::get('/MAReport',[ReportController::class,'MAReport'])->name('MAReport');
 Route::get('/MAViewAR',[ReportController::class,'MAViewAR'])->name('MAViewAR');
 Route::get('/MAViewPR',[ReportController::class,'MAViewPR'])->name('MAViewPR');
+
+
+Route::resource("/bulletin", BulletinController::class);
