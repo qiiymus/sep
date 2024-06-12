@@ -3,10 +3,21 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\ReportController;
+use app\Http\Controllers\TimetableController;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');
+});
+
+Route::get('/ManageKAFATimetable', [TimetableController::class], 'ParentsViewTT');
+Route::get('/ManageKAFATimetable', [TimetableController::class], 'TeacherViewTT');
+Route::get('/ManageKAFATimetable', [TimetableController::class], 'KAViewTT');
+
+
+use App\Http\Controllers\ResultController;
+
+Route::get('/ka-choose-class', [ResultController::class, 'showKAChooseClassPage'])->name('ka.choose.class');
+
 
 Route::get('/login', [AuthManager::class, 'login'])->name('login');
 Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
