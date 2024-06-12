@@ -39,3 +39,4 @@ Route::get('/MAViewPR',[ReportController::class,'MAViewPR'])->name('MAViewPR');
 
 
 Route::resource("/bulletin", BulletinController::class);
+Route::get('/bulletins', [BulletinController::class, 'index'])->name('Manage Bulletin.KABulletinList');
