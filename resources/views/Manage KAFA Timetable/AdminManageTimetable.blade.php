@@ -1,9 +1,8 @@
 @extends('layout')
-@section('title','Urus Jadual Waktu Kelas')
+@section('title', 'Urus Jadual Waktu Kelas')
 @section('content')
 <head>
     <style>
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -13,6 +12,7 @@
         .main {
             flex-grow: 1;
             margin: 1.5rem;
+            margin-left: 4rem;
             padding: 20px;
         }
         .main h1 {
@@ -20,7 +20,7 @@
             font-weight: bold;
         }
         .search-container {
-        	padding: 10px;
+            padding: 10px;
             display: flex;
             margin-top: 20px;
             gap: 10px;
@@ -65,7 +65,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #9FB996;
+            background-color: #d7ddcd;
             margin-top: 20px;
         }
         thead {
@@ -74,8 +74,17 @@
         }
         th, td {
             padding: 12px;
-            text-align: left;
+            vertical-align: middle; /* Center content vertically */
             border: 1px solid;
+        }
+        th:first-child,
+        td:first-child {
+            width: 60%; /* Set wider width for first column */
+            text-align: left; /* Align text left */
+        }
+        td:last-child {
+            width: 40%; /* Set narrower width for second column */
+            text-align: center; /* Align buttons center */
         }
         td button {
             margin-right: 5px;
@@ -88,10 +97,6 @@
             background-color: #2196F3;
             color: white;
         }
-        button.edit {
-            background-color: #FFC107;
-            color: white;
-        }
         button.delete {
             background-color: #F44336;
             color: white;
@@ -99,25 +104,33 @@
         button.view:hover {
             background-color: #1976D2;
         }
-        button.edit:hover {
-            background-color: #FFA000;
-        }
         button.delete:hover {
             background-color: #D32F2F;
         }
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center buttons horizontally */
+        }
+        .button-container form {
+            margin: 0; /* Remove margin to eliminate extra space */
+        }
     </style>
 </head>
+
 <body>
 <div class="content-wrapper d-flex">
     @include('include.KAmenu')
     <div class="main flex-grow-1">
         <h1>Jadual Waktu Kelas</h1>
         <div class="search-container">
-        	<p><b>Kelas</b></p>
+            <p><b>Kelas</b></p>
             <input type="text">
             <button type="button">Cari</button>
         </div>
-        <button type="button" id="add">+ Tambah Jadual Waktu</button>
+        <form action="{{ route('KAAddTT') }}">
+            <button type="submit" id="add" >+ Tambah Jadual Waktu Kelas</button>
+        </form>
+
         <table>
             <thead>
                 <tr>
@@ -126,25 +139,26 @@
                 </tr>
             </thead>
             <tbody>
+            @foreach($timetables as $timetable)
                 <tr>
-                    <td>Kelas 1</td>
+                    <td>{{ $timetable->kelas }}</td>
                     <td>
-                        <button class="view">View</button>
-                        <button class="delete">Delete</button>
+                        <div class="button-container">
+                            <form action="{{ route('timetable.show', $timetable->id) }}" method="GET" style="margin: 0">
+                                <button type="submit" class="view">View</button>
+                            </form>
+                            <form action="{{ route('timetable.destroy', $timetable->id) }}" method="POST" style="margin: 0;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>Kelas 2</td>
-                    <td>
-                        <button class="view">View</button>
-                        <button class="delete">Delete</button>
-                    </td>
-                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
 </div>
-
 </body>
-</html>
 @endsection

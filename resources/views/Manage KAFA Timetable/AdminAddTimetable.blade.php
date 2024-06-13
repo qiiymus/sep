@@ -10,6 +10,7 @@
         .main {
             flex-grow: 1;
             margin: 1.5rem;
+            margin-left: 4rem;
             padding: 20px;
         }
         .image-container {
@@ -69,6 +70,10 @@
         .button-container {
             text-align: center;
         }
+        .kelas-ustazah-container {
+            display: flex;
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -77,56 +82,60 @@
     @include('include.KAmenu')
     <div class="main flex-grow-1">
         <h1>Jadual Waktu Kelas</h1>
-        <div class="form-inline">
-            <label for="kelas">Kelas:</label>
-            <input type="text" id="kelas" name="kelas">
-        </div>
+        <form action="{{ route('timetable.store') }}" method="POST">
+            @csrf
+            <div class="kelas-ustazah-container">
+                <div class="form-inline">
+                    <label for="kelas">Kelas:</label>
+                    <input type="text" id="kelas" name="kelas">
+                </div>
 
-        <div class="form-inline">
-            <label for="ustazah">Ustazah:</label>
-            <input type="text" id="ustazah" name="ustazah">
-        </div>
-        <section class="schedule">
-        <table>
-            <thead>
-                <tr>
-                    <th>Hari/Masa</th>
-                    <th>2.00-2.30 pm</th>
-                    <th>2.30-3.00 pm</th>
-                    <th>3.00-3.30 pm</th>
-                    <th>3.30-4.00 pm</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Isnin</td>
-                    <td><input type="text" name="subject1isnin"></td>
-                    <td><input type="text" name="subject2isnin"></td>
-                    <td class="rehat-row" rowspan="3">R E H A T</td>
-                    <td><input type="text" name="subject3isnin"></td>
-                </tr>
-                <tr>
-                    <td>Selasa</td>
-                    <td><input type="text" name="subject1selasa"></td>
-                    <td><input type="text" name="subject2selasa"></td>
-                    <td><input type="text" name="subject3selasa"></td>
-                </tr>
-                <tr>
-                    <td>Khamis</td>
-                    <td><input type="text" name="subject1khamis"></td>
-                    <td><input type="text" name="subject2khamis"></td>
-                    <td><input type="text" name="subject3khamis"></td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <div class="button-container">
-        <button>Batal</button>
-        <button>Simpan</button>
-    </div>
+                <div class="form-inline">
+                    <label for="ustazah">Ustazah:</label>
+                    <input type="text" id="ustazah" name="ustazah">
+                </div>
+            </div>
+            <section class="schedule">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hari/Masa</th>
+                            <th>2.00-2.30 pm</th>
+                            <th>2.30-3.00 pm</th>
+                            <th>3.00-3.30 pm</th>
+                            <th>3.30-4.00 pm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Isnin</td>
+                            <td><input type="text" name="subject1isnin"></td>
+                            <td><input type="text" name="subject2isnin"></td>
+                            <td class="rehat-row" rowspan="3">R E H A T</td>
+                            <td><input type="text" name="subject3isnin"></td>
+                        </tr>
+                        <tr>
+                            <td>Selasa</td>
+                            <td><input type="text" name="subject1selasa"></td>
+                            <td><input type="text" name="subject2selasa"></td>
+                            <td><input type="text" name="subject3selasa"></td>
+                        </tr>
+                        <tr>
+                            <td>Khamis</td>
+                            <td><input type="text" name="subject1khamis"></td>
+                            <td><input type="text" name="subject2khamis"></td>
+                            <td><input type="text" name="subject3khamis"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <div class="button-container">
+                <button type="submit">Simpan</button>
+                <button type="reset">Batal</button>
+            </div>
+        </form>
     </div>
 </div>
-
 </body>
 </html>
 @endsection

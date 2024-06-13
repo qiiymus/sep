@@ -39,6 +39,10 @@
                     <td>ALAMAT RUMAH</td>
                     <td colspan="3"><input type="text" class="form-control" name="std_address"></td>
                 </tr>
+                <tr>
+                    <td>KELAS</td>
+                    <td colspan="3"><input type="text" class="form-control" name="std_class"></td>
+                </tr>
             </table><br><br>
 
             <h6 style="color:#e98063" style="font-weight: bold">MAKLUMAT PENDAFTAR/WARIS</h6>

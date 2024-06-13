@@ -50,33 +50,33 @@
   
 <div class="d-flex flex-column flex-shrink-0" style="width: 3.5rem; background-color: #9fb996; height: 100%; position: fixed;">
   <a href="/" class="d-block p-3 link-dark text-decoration-none text-center" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
-    <img src="img/kafa logo.png" width="30" height="30" alt="Logo">
+    <img src="{{ asset('img/kafa logo.png') }}" width="30" height="30" alt="Logo">
     <span class="visually-hidden">Icon-only</span>
   </a>
   <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
     <li class="nav-item">
       <a href="#" class="nav-link py-3 border-bottom" title="Result" data-bs-toggle="tooltip" data-bs-placement="right">
-        <img src="img/medal (g).png" width="24" height="24" alt="Result">
+        <img src="{{ asset('img/medal (g).png') }}" width="24" height="24" alt="Result">
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link py-3 border-bottom" title="Timetable" data-bs-toggle="tooltip" data-bs-placement="right">
-        <img src="img/timetable (g).png" width="24" height="24" alt="Timetable">
+      <a href="{{ route('KAManageTT') }}" class="nav-link py-3 border-bottom" title="Timetable" data-bs-toggle="tooltip" data-bs-placement="right">
+        <img src="{{ asset('img/timetable (g).png') }}" width="24" height="24" alt="Timetable">
       </a>
     </li>
     <li>
       <a href="KAReport" class="nav-link py-3 border-bottom" title="Report" data-bs-toggle="tooltip" data-bs-placement="right">
-        <img src="img/report (g).png" width="24" height="24" alt="Report">
+        <img src="{{ asset('img/report (g).png') }}" width="24" height="24" alt="Report">
       </a>
     </li>
     <li>
       <a href="#" class="nav-link py-3 border-bottom" title="Bulletin" data-bs-toggle="tooltip" data-bs-placement="right">
-        <img src="img/bulletin (g).png" width="24" height="24" alt="Bulletin">
+        <img src="{{ asset('img/bulletin (g).png') }}" width="24" height="24" alt="Bulletin">
       </a>
     </li>
     <li>
       <a href="#" class="nav-link py-3 border-bottom" title="Profile" data-bs-toggle="tooltip" data-bs-placement="right">
-        <img src="img/user (g).png" width="24" height="24" alt="Profile">
+        <img src="{{ asset('img/user (g).png') }}" width="24" height="24" alt="Profile">
       </a>
     </li>
   </ul>

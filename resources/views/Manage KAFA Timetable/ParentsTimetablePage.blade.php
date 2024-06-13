@@ -42,8 +42,8 @@
   @include('include.parentmenu')
   <div class="main">
     <h1>Jadual Waktu Kelas</h1>
-    <p><b>Kelas:</b></p>
-    <p><b>Ustazah:</b></p>
+    <h6><b>Kelas:</b></h6>
+    <h6><b>Ustazah:</b></h6>
     <section class="schedule">
       <table>
         <tr>

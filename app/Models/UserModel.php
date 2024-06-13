@@ -26,7 +26,8 @@ class UserModel extends Authenticatable
         'BirthCert_Num',
         'Birthdate',
         'Age',
-        'Address'
+        'Address',
+        'class'
     ];
 
     /**

@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Timetable;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use App\Models\TimetableModel;
 
 class TimetableController extends Controller
 {
@@ -32,56 +29,81 @@ class TimetableController extends Controller
     }
 
     public function KAManageTT() {
-        return view('Manage KAFA Timetable.AdminManageTimetable');
+        $timetables = TimetableModel::all();
+        return view('Manage KAFA Timetable.AdminManageTimetable', compact('timetables'));
     }
 
-    //Display a listing of the resource.
     public function index()
     {
-        //
+        /*$timetables = TimetableModel::all();
+        return view('Manage KAFA Timetable.AdminTimetablePage', compact('timetables'));*/
     }
 
-    //Show the form for creating a new resource.
-    
     public function create()
     {
-        //
+        return view('Manage KAFA Timetable.AdminAddTimetable');
     }
 
-    //Store a newly created resource in storage.
-    
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kelas' => 'required|string|max:255',
+            'ustazah' => 'required|string|max:255',
+            'subject1isnin' => 'nullable|string|max:255',
+            'subject2isnin' => 'nullable|string|max:255',
+            'subject3isnin' => 'nullable|string|max:255',
+            'subject1selasa' => 'nullable|string|max:255',
+            'subject2selasa' => 'nullable|string|max:255',
+            'subject3selasa' => 'nullable|string|max:255',
+            'subject1khamis' => 'nullable|string|max:255',
+            'subject2khamis' => 'nullable|string|max:255',
+            'subject3khamis' => 'nullable|string|max:255',
+        ]);
+
+        TimetableModel::create($request->all());
+
+        return redirect()->route('KAManageTT')->with('success', 'Timetable created successfully.');
     }
 
-    
-    //Display the specified resource.
-    
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $timetable = TimetableModel::findOrFail($id);
+        return view('Manage KAFA Timetable.AdminTimetablePage', compact('timetable'));
     }
 
-    
-    //Show the form for editing the specified resource.
-    
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $timetable = TimetableModel::findOrFail($id);
+        return view('Manage KAFA Timetable.AdminEditTimetable', compact('timetable'));
     }
 
-    //Update the specified resource in storage.
-    
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'kelas' => 'required|string|max:255',
+            'ustazah' => 'required|string|max:255',
+            'subject1isnin' => 'nullable|string|max:255',
+            'subject2isnin' => 'nullable|string|max:255',
+            'subject3isnin' => 'nullable|string|max:255',
+            'subject1selasa' => 'nullable|string|max:255',
+            'subject2selasa' => 'nullable|string|max:255',
+            'subject3selasa' => 'nullable|string|max:255',
+            'subject1khamis' => 'nullable|string|max:255',
+            'subject2khamis' => 'nullable|string|max:255',
+            'subject3khamis' => 'nullable|string|max:255',
+        ]);
+
+        $timetable = TimetableModel::findOrFail($id);
+        $timetable->update($request->all());
+
+        return redirect()->route('KAManageTT')->with('success', 'Timetable updated successfully.');
     }
 
-    //Remove the specified resource from storage.
-    
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $timetable = TimetableModel::findOrFail($id);
+        $timetable->delete();
+
+        return redirect()->route('KAManageTT')->with('success', 'Timetable deleted successfully.');
     }
 }
