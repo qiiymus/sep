@@ -1,6 +1,7 @@
 {{-- LKABulletinCreate --}}
-
+@include('include.header')
 @extends('Manage Bulletin.layouts')
+
 <div class="d-flex">
 @include('include.KAmenu')
 @section('content')

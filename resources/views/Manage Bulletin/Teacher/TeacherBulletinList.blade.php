@@ -1,6 +1,8 @@
 {{-- KABulletinList --}}
-
+@include('include.header')
 @extends('Manage Bulletin.layouts')
+<div class="d-flex">
+    @include('include.teachermenu')
 @section('content')
     <div class="container">
         <div class="row" style="margin:20px;">
