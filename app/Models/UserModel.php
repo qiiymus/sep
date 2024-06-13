@@ -12,6 +12,7 @@ class UserModel extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = "student";
+    protected $primarykey = "id";
 
     /**
      * The attributes that are mass assignable.
@@ -19,13 +20,14 @@ class UserModel extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'std_image',
-        'std_name',
-        'mykid',
-        'birthcert',
-        'std_bdate',
-        'std_age',
-        'std_address'
+        'Image',
+        'Name',
+        'Mykid_Num',
+        'BirthCert_Num',
+        'Birthdate',
+        'Age',
+        'Address',
+        'class'
     ];
 
     /**
@@ -43,11 +45,11 @@ class UserModel extends Authenticatable
      *
      * @return array<string, string>
      */
-    /*protected function casts(): array
+    protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }*/
+    }
 }

@@ -7,7 +7,7 @@
         <div style="text-align:left"><br>
             <h2 style="color:#2d532d">Borang Laporan Aktiviti</h2><br>
         </div>
-        <form>
+        <form action="{{route('KACreateAR.post')}}" method="POST">
             <table class="table table-borderless">
                 <tr>
                     <td scope="col">Nama Aktiviti:</td>
@@ -44,13 +44,13 @@
                     <td scope="col" colspan="5">
                     <select id="act_teacher" name="act_teacher" class="form-control">
                         <option selected>Pilih ID guru bertugas</option>
-                        <option value="mother">Ibu Kandung</option>
-                        <option value="father">Bapa Kandung</option>
-                        <option value="stepfam">Ibu/Bapa Tiri</option>
-                        <option value="adopter">Ibu/Bapa Angkat</option>
-                        <option value="sibling">Adik Beradik</option>
-                        <option value="grandparent">Datuk/Nenek</option>
-                        <option value="caregiver">Penjaga</option>
+                        <option value="T001">T001</option>
+                        <option value="T002">T002</option>
+                        <option value="T003">T003</option>
+                        <option value="T004">T004</option>
+                        <option value="T005">T005</option>
+                        <option value="T006">T006</option>
+                        <option value="T007">T007</option>
                     </select>
                     </td>
                 </tr>
@@ -63,15 +63,17 @@
                 <tr>
                     <td scope="col">Ringkasan Aktiviti:</td>
                     <td scope="col" colspan="5">
-                        <input type="textarea" class="form-control" name="act_details">
+                        <textarea class="form-control" name="act_details"></textarea>
                     </td>
                 </tr>
             </table>
-            <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
-            style="background-color:#2d532d" style=width:300px>Kembali</button>
-            <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
-            style="background-color:#2d532d" style=width:300px>Simpan</button>
-            <button type="submit" class="btn btn-primary" style="background-color:#2d532d">Hantar</button>
+            <div style="text-align:center">
+                <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
+                style="background-color:#2d532d" style=width:300px>Kembali</button>
+                <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
+                style="background-color:#2d532d" style=width:300px>Simpan</button>
+                <button type="submit" class="btn btn-primary" style="background-color:#2d532d">Hantar</button>
+            </div>
         </form>
     </div>
 @endsection

@@ -41,20 +41,24 @@
       background-color: #fff6a0;
       height: 100vh;
     }
+
+      li a:hover {
+        background-color: white;
+      }
   </style>
 
   <!-- Custom styles for this template -->
   <link href="sidebars.css" rel="stylesheet">
 </head>
 <body>
-<div class="sidebar d-flex flex-column flex-shrink-0">
+<div class="sidebar d-flex flex-column flex-shrink-0 ; position: fixed;">
   <a href="/" class="d-block p-3 link-dark text-decoration-none text-center" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
     <img src="{{ asset ('img/kafa logo.png') }}" width="30" height="30" alt="Logo">
     <span class="visually-hidden">Icon-only</span>
   </a>
   <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
     <li class="nav-item">
-      <a href="#" class="nav-link active py-3 border-bottom" aria-current="page" title="Result" data-bs-toggle="tooltip" data-bs-placement="right">
+      <a href="#" class="nav-link py-3 border-bottom" title="Result" data-bs-toggle="tooltip" data-bs-placement="right">
         <img src="{{ asset ('img/medal (y).png') }}" width="24" height="24" alt="Result">
       </a>
     </li>

@@ -26,13 +26,16 @@
                 </td>
                 <td></td>
                 <td>
-                <select class="form-control" style="background-color:#2d532d; color:white">
-                    <option selected>Cipta Laporan</option>
-                    <a href="'KACreateAR'">
-                        <option>Laporan Aktiviti</option>
+                <div class="dropdown border-top">
+                    <a href="#" class="align-items-center justify-content-center p-2  text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false" 
+                    style="background-color:#2d532d; color:white; border-radius:5px">
+                    Cipta Laporan
                     </a>
-                    <option onclick="document.location='KACreatePR'">Laporan Pencapaian</option>
-                </select>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+                    <li><a class="dropdown-item" href="KACreateAR">Laporan Aktiviti</a></li>
+                    <li><a class="dropdown-item" href="KACreatePR">Laporan Pencapaian</a></li>
+                    </ul>
+                </div>
                 </td>
             </tr>
         </table>
@@ -49,14 +52,16 @@
                 </tr>
             </thead>
             <tbody>
+            @foreach($report as $index => $row)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td>{{ $row->Name }}</td>
+                    <td>LA00{{ $row->AR_ID }}/2024</td>
+                    <td>{{ $row->Report_Date }}</td>
+                    <td>{{ $row->reportType->Type }}</td>
+                    <td>{{ $row->reportStatus->status }}</td>
+                    <td></td>
                 </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
