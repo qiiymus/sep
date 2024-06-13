@@ -1,7 +1,10 @@
 {{-- KABulletinList --}}
 
 @extends('Manage Bulletin.layouts')
+<div class="d-flex">
+    @include('include.KAmenu')
 @section('content')
+
     <div class="container">
         <div class="row" style="margin:20px;">
             <div class="col-12">
