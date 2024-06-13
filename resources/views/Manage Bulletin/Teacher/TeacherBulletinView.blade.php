@@ -11,12 +11,10 @@
     </div>
     <div class="card-body">
     <h2>Butiran Bulletin</h2>
-    <br/>
-    <br/>
         <div class="card-body">
-        <h4 class="card-title">Daripada : {{ $bulletin->daripada }}</h5><hr>
-        <h4 class="card-title">Kepada : {{ $bulletin->kepada }}</h5><hr>
-        <h3 class="card-title">Tajuk : {{ $bulletin->tajuk }}</h5><hr>
+        <p class="card-title">Daripada : {{ $bulletin->daripada }}</p>
+        <p class="card-title">Kepada : {{ $bulletin->kepada }}</p><hr>
+        <h3 class="card-title">Tajuk : {{ $bulletin->tajuk }}</h3><hr>
         <p class="card-text">Tarikh : {{ $bulletin->tarikh }}</p><hr>
         <p class="card-text">Kepentingan : {{ $bulletin->kepentingan }}</p><hr>
         <p class="card-text">Status : {{ $bulletin->status }}</p><hr>
