@@ -1,5 +1,3 @@
-KAFA Admin View Timetable
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
