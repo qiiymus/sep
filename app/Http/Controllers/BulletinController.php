@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
-use App\Models\BulletinModel; //add Bulletin Model - Data is coming from the database via Model.
+use App\Models\BulletinModel; 
  
 class BulletinController extends Controller
 {
