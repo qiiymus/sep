@@ -46,7 +46,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>ID Pelajar</th>
+                                        <th>Kelas Pelajar</th>
                                         <th>Nama Pelajar</th>
                                         <th>Operasi</th>
                                     </tr>
@@ -55,7 +55,7 @@
                                 @foreach($ManageStudentResults as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->student_id }}</td>
+                                        <td>{{ $item->class }}</td>
                                         <td>{{ $item->name }}</td>
  
                                         <td>
