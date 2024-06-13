@@ -15,11 +15,7 @@ Route::get('/ManageKAFATimetable', [TimetableController::class], 'ParentsViewTT'
 Route::get('/ManageKAFATimetable', [TimetableController::class], 'TeacherViewTT');
 Route::get('/ManageKAFATimetable', [TimetableController::class], 'KAViewTT');
 
-
-use App\Http\Controllers\ResultController;
-
 Route::get('/ka-choose-class', [ResultController::class, 'showKAChooseClassPage'])->name('ka.choose.class');
-
 
 Route::get('/login', [AuthManager::class, 'login'])->name('login');
 Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
@@ -39,6 +35,4 @@ Route::get('/MAReport',[ReportController::class,'MAReport'])->name('MAReport');
 Route::get('/MAViewAR',[ReportController::class,'MAViewAR'])->name('MAViewAR');
 Route::get('/MAViewPR',[ReportController::class,'MAViewPR'])->name('MAViewPR');
 
-
 Route::resource('/bulletin', BulletinController::class);
-Route::get('/ManageStudentResults', [ResultController::class, 'showKAChooseClassPage']);
