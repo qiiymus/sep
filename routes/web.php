@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\BulletinController;
-use App\Http\Controllers\ResultController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +18,15 @@ Route::get('/KAEditTT', [TimetableController::class, 'KAEditTT'])->name('KAEditT
 Route::get('/KAManageTT', [TimetableController::class, 'KAManageTT'])->name('KAManageTT');
 
 
+Route::get('/ManageKAFATimetable', [TimetableController::class], 'ParentViewTT');
+Route::get('/ManageKAFATimetable', [TimetableController::class], 'TeacherViewTT');
+Route::get('/ManageKAFATimetable', [TimetableController::class], 'KAViewTT');
+
+
+use App\Http\Controllers\ResultController;
+
+Route::get('/ka-choose-class', [ResultController::class, 'showKAChooseClassPage'])->name('ka.choose.class');
+
 
 Route::get('/login', [AuthManager::class, 'login'])->name('login');
 Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
@@ -28,15 +36,17 @@ Route::get('/logout',[AuthManager::class,'logout'])->name('logout');
 
 Route::get('/KAReport',[ReportController::class,'KAReport'])->name('KAReport');
 Route::get('/KACreateAR',[ReportController::class,'KACreateAR'])->name('KACreateAR');
-//Route::get('/KACreateAR',[ReportController::class,'KACreateARPost'])->name('KACreateAR.post');
+Route::post('/KACreateAR',[ReportController::class,'KACreateARPost'])->name('KACreateAR.post');
 Route::get('/KAEditAR',[ReportController::class,'KAEditAR'])->name('KAEditAR');
 Route::get('/KAViewAR',[ReportController::class,'KAViewAR'])->name('KAViewAR');
 Route::get('/KACreatePR',[ReportController::class,'KACreatePR'])->name('KACreatePR');
+Route::post('/KACreatePR',[ReportController::class,'KACreatePRPost'])->name('KACreatePR.post');
 Route::get('/KAEditPR',[ReportController::class,'KAEditPR'])->name('KAEditPR');
 Route::get('/KAViewPR',[ReportController::class,'KAViewPR'])->name('KAViewPR');
 Route::get('/MAReport',[ReportController::class,'MAReport'])->name('MAReport');
 Route::get('/MAViewAR',[ReportController::class,'MAViewAR'])->name('MAViewAR');
 Route::get('/MAViewPR',[ReportController::class,'MAViewPR'])->name('MAViewPR');
+
 
 
 // <--KAFA ADMIN BULLETIN-->
@@ -64,3 +74,5 @@ Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher
 Route::get('/ManageStudentResults', [ResultController::class, 'ChooseClass'])->name('ManageStudentResults.ChooseClass');
 Route::get('/ManageStudentResults/KAStudentList', [ResultController::class, 'index'])->name('ManageStudentResults.index');
 Route::get('/ManageStudentResults/{id}/KAResultPage', [ResultController::class, 'show'])->name('ManageStudentResults.show');
+
+Route::resource('/bulletin', BulletinController::class);
