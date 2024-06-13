@@ -1,6 +1,6 @@
 {{-- KABulletinView --}}
 
-@extends('Manage Bulletin.KABulletinView')
+@extends('Manage Bulletin.layouts')
 @section('content')
   
 <div class="card" style="margin:20px;">

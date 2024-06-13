@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
-use App\Models\BulletinModel; //add Bulletin Model - Data is coming from the database via Model.
- 
+use App\Models\BulletinModel; 
 class BulletinController extends Controller
 {
     /**
@@ -14,8 +13,8 @@ class BulletinController extends Controller
      */
     public function index()
     {
-        $bulletins = BulletinModel::all();
-        return view ('Manage Bulletin.KABulletinList')->with('bulletins', $bulletins);
+        $bulletins = BulletinModel::paginate(5); // Adjust the number as needed
+        return view('Manage Bulletin.KABulletinList')->with('bulletins', $bulletins);
     }
  
     /**
@@ -25,7 +24,7 @@ class BulletinController extends Controller
      */
     public function create()
     {
-        return view('Manage Bulletin.KABulletinCreateInfo');
+        return view('ManageBulletin.KABulletinCreateInfo');
     }
  
     /**
@@ -35,11 +34,25 @@ class BulletinController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $input = $request->all();
-        BulletinModel::create($input);
-        return redirect('bulletin')->with('flash_message', 'Bulletin Addedd!');  
-    }
+{
+    // Validate the request data
+    $validatedData = $request->validate([
+        'tajuk' => 'required|string|max:255',
+        'tarikh' => 'required|date',
+        'kepentingan' => 'required|string|max:255',
+        'status' => 'required|string|max:255',
+        'daripada' => 'required|string|max:255',
+        'kepada' => 'required|string|max:255',
+        'isi' => 'required|string',
+    ]);
+
+    // Create a new bulletin record with the validated data
+    BulletinModel::create($validatedData);
+
+    // Redirect to the bulletin index view with a success message
+    return redirect()->route('bulletin.index')->with('flash_message', 'Bulletin Added!');
+}
+
  
     /**
      * Display the specified resource.
@@ -53,29 +66,7 @@ class BulletinController extends Controller
         return view('Manage Bulletin.KABulletinView')->with('bulletins', $bulletin);
     }
  
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     
- 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $bulletin = BulletinModel::find($id);
-        $input = $request->all();
-        $bulletin->update($input);
-        return redirect('bulletin')->with('flash_message', 'Bulletin Updated!');  
-    }
- 
     /**
      * Remove the specified resource from storage.
      *
@@ -84,7 +75,7 @@ class BulletinController extends Controller
      */
     public function destroy($id)
     {
-        BulletinModel::destroy($id);
+        BulletinController::destroy($id);
         return redirect('bulletin')->with('flash_message', 'Bulletin deleted!');  
     }
 }

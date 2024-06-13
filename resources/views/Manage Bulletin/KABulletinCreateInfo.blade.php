@@ -1,6 +1,6 @@
 {{-- LKABulletinCreate --}}
 
-@extends('Manage Bulletin.KABulletinCreateInfo')
+@extends('Manage Bulletin.layouts')
 @section('content')
   
 <div class="card" style="margin:20px;">

@@ -1,6 +1,6 @@
 {{-- KABulletinList --}}
 
-@extends('Manage Bulletin.KABulletinList')
+@extends('Manage Bulletin.layouts')
 @section('content')
     <div class="container">
         <div class="row" style="margin:20px;">
