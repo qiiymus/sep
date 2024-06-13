@@ -2,7 +2,7 @@
 @section('title','Cipta Laporan Aktiviti')
 @section('content')
 <div class="d-flex">
-@include('include.menu')
+@include('include.KAmenu')
     <div class="container" class="flex-grow-1 p-3">
         <div style="text-align:left"><br>
             <h2 style="color:#2d532d">Borang Laporan Aktiviti</h2><br>
@@ -43,7 +43,7 @@
                     <td scope="col">Guru Bertugas:</td>
                     <td scope="col" colspan="5">
                     <select id="act_teacher" name="act_teacher" class="form-control">
-                        <option selected>Pilih guru bertugas</option>
+                        <option selected>Pilih ID guru bertugas</option>
                         <option value="mother">Ibu Kandung</option>
                         <option value="father">Bapa Kandung</option>
                         <option value="stepfam">Ibu/Bapa Tiri</option>
