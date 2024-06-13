@@ -75,14 +75,14 @@ class ReportController extends Controller
 
         ]);
 
-        $data['act_name']=$request->name;
-        $data['act_type']=$request->email;
-        $data['act_date']= $request->password;
-        $data['act_startTime']=$request->name;
-        $data['act_endTime']=$request->email;
-        $data['act_teacher']= $request->password;
-        $data['act_place']=$request->name;
-        $data['act_details']=$request->email;
+        $data['act_name']=$request->Name;
+        $data['act_type']=$request->Type;
+        $data['act_date']= $request->Activity_Date;
+        $data['act_startTime']=$request->StartTime;
+        $data['act_endTime']=$request->EndTime;
+        $data['act_teacher']= $request->Teacher_ID;
+        $data['act_place']=$request->Location;
+        $data['act_details']=$request->Description;
         $user=ReportModel::create($data);
 
         if (!$user){

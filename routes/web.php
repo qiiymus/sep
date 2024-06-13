@@ -28,6 +28,7 @@ Route::get('/logout',[AuthManager::class,'logout'])->name('logout');
 
 Route::get('/KAReport',[ReportController::class,'KAReport'])->name('KAReport');
 Route::get('/KACreateAR',[ReportController::class,'KACreateAR'])->name('KACreateAR');
+//Route::get('/KACreateAR',[ReportController::class,'KACreateARPost'])->name('KACreateAR.post');
 Route::get('/KAEditAR',[ReportController::class,'KAEditAR'])->name('KAEditAR');
 Route::get('/KAViewAR',[ReportController::class,'KAViewAR'])->name('KAViewAR');
 Route::get('/KACreatePR',[ReportController::class,'KACreatePR'])->name('KACreatePR');
