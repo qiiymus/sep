@@ -25,7 +25,7 @@
                                         <th>Tarikh</th>
                                         <th>Kepentingan</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
+                                        <th>Tindakan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,15 +39,15 @@
 
                                         <td>
                                             <a href="{{ url('/bulletin/' . $item->id) }}" title="View Bulletin">
-                                                <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Lihat</button>
+                                                <button class="btn btn-info btn-sm" style="background-color: #9FB996; border-color: #9FB996;"><i class="fa fa-eye" aria-hidden="true"></i> Lihat</button>
                                             </a>
                                             <a href="{{ url('/bulletin/' . $item->id . '/edit') }}" title="Edit Bulletin">
-                                                <button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sunting</button>
+                                                <button class="btn btn-primary btn-sm" style="background-color: #9FB996; border-color: #9FB996;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sunting</button>
                                             </a>
                                             <form method="POST" action="{{ url('/bulletin/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Bulletin" onclick="return confirm('Confirm delete?')">
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Bulletin" onclick="return confirm('Confirm delete?')" style="background-color: #9FB996; border-color: #9FB996;">
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i> Buang
                                                 </button>
                                             </form>
