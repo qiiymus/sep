@@ -1,8 +1,9 @@
 @extends('layout')
 @section('title','Laporan')
 @section('content')
-@include('include.menu')
-    <div class="container">
+<div class="d-flex">
+@include('include.KAmenu')
+    <div class="container" class="flex-grow-1 p-3">
         <div style="text-align:left"><br>
             <h1 style="color:#2d532d">Laporan</h1>
         </div>
@@ -59,4 +60,5 @@
             </tbody>
         </table>
     </div>
+</div>
 @endsection
