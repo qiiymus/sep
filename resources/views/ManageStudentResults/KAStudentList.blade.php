@@ -1,4 +1,5 @@
 @extends('layout')
+
 @section('content')
 <style>
 .table-responsive {
@@ -55,7 +56,9 @@
                             <td>{{ $item->class }}</td>
                             <td>{{ $item->name }}</td>
                             <td>
-                                <a href="{{ url('/ManageStudentResults/KAResultPage/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Papar</button></a>
+                                <a href="{{ url('/ManageStudentResults/' . $item->id . '/KAResultPage') }}" title="View Student">
+                                    <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Papar</button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -65,3 +68,4 @@
     </div>
 </div>
 @endsection
+
