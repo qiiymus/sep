@@ -55,8 +55,9 @@ Route::get('/viewbulletinParents/{id}', [BulletinController::class, 'showparents
 
 // <--TEACHER BULLETIN-->
 
-Route::get('/bulletin/teachers', [BulletinController::class, 'indexteacher']);
+Route::get('/bulletinTeachers', [BulletinController::class, 'indexteacher']);
 Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher'])->name('bulletin.viewteacher');
+
 
 
 // Routes for ResultController

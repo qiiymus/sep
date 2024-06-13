@@ -14,13 +14,13 @@
     <br/>
     <br/>
         <div class="card-body">
-        <h4 class="card-title">Daripada : {{ $bulletins->daripada }}</h5><hr>
-        <h4 class="card-title">Kepada : {{ $bulletins->kepada }}</h5><hr>
-        <h3 class="card-title">Tajuk : {{ $bulletins->tajuk }}</h5><hr>
-        <p class="card-text">Tarikh : {{ $bulletins->tarikh }}</p><hr>
-        <p class="card-text">Kepentingan : {{ $bulletins->kepentingan }}</p><hr>
-        <p class="card-text">Status : {{ $bulletins->status }}</p><hr>
-        <p class="card-text">Isi : {{ $bulletins->isi }}</p><hr>
+        <h4 class="card-title">Daripada : {{ $bulletin->daripada }}</h5><hr>
+        <h4 class="card-title">Kepada : {{ $bulletin->kepada }}</h5><hr>
+        <h3 class="card-title">Tajuk : {{ $bulletin->tajuk }}</h5><hr>
+        <p class="card-text">Tarikh : {{ $bulletin->tarikh }}</p><hr>
+        <p class="card-text">Kepentingan : {{ $bulletin->kepentingan }}</p><hr>
+        <p class="card-text">Status : {{ $bulletin->status }}</p><hr>
+        <p class="card-text">Isi : {{ $bulletin->isi }}</p><hr>
   </div>
     </hr>
   </div>
