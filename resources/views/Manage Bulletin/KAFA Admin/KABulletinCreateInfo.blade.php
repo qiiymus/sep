@@ -1,6 +1,9 @@
 {{-- LKABulletinCreate --}}
-
+@include('include.header')
 @extends('Manage Bulletin.layouts')
+
+<div class="d-flex">
+@include('include.KAmenu')
 @section('content')
   
 <div class="card" style="margin:20px;">

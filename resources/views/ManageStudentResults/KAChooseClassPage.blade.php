@@ -1,29 +1,32 @@
 @extends('layout')
 @section('content')
-
+@include('include.KAmenu')
 <style>
 .card {
-        margin: 200px;
-    }
+    margin: 200px;
+}
 </style>
 
 <div class="card">
-                    <div class="card-header">
-            <h2>Semak Keputusan Pelajar</h2>
-</div>
-<div class="card-body">
-            <p>Sila pilih kelas pelajar</p>
-            <select>
+    <div class="card-header">
+        <h2>Semak Keputusan Pelajar</h2>
+    </div>
+    <div class="card-body">
+        <p>Sila pilih kelas pelajar</p>
+        <form action="{{ route('ManageStudentResults.index') }}" method="GET">
+            <select name="class">
                 <option value="">-Sila pilih-</option>
-                <!-- Add more options as needed -->
+                @foreach($classes as $class)
+                    <option value="{{ $class }}">{{ $class }}</option>
+                @endforeach
             </select>
             <br>
-            <a href="{{ route('ManageStudentResults.index') }}" title="Continue">
-            <button class="btn btn-info btn-sm">
+            <button type="submit" class="btn btn-info btn-sm">
                 <i class="fa fa-eye" aria-hidden="true"></i> Teruskan
             </button>
-        </a>
-           
-            </div>      
+        </form>
+    </div>
+</div>
+@endsection
 
 

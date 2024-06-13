@@ -7,6 +7,9 @@ use App\Models\BulletinModel; //add Bulletin Model - Data is coming from the dat
  
 class BulletinController extends Controller
 {
+
+    // <--KAFA ADMIN-->
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,7 @@ class BulletinController extends Controller
     public function index()
     {
         $bulletins = BulletinModel::all();
-        return view ('Manage Bulletin.KABulletinList')->with('bulletins', $bulletins);
+        return view ('Manage Bulletin.KAFA Admin.KABulletinList')->with('bulletins', $bulletins);
     }
  
     /**
@@ -25,7 +28,7 @@ class BulletinController extends Controller
      */
     public function create()
     {
-        return view('Manage Bulletin.KABulletinCreateInfo');
+        return view('Manage Bulletin.KAFA Admin.KABulletinCreateInfo');
     }
  
     /**
@@ -50,7 +53,7 @@ class BulletinController extends Controller
     public function show($id)
     {
         $bulletin = BulletinModel::find($id);
-        return view('Manage Bulletin.KABulletinView')->with('bulletins', $bulletin);
+        return view('Manage Bulletin.KAFA Admin.KABulletinView')->with('bulletins', $bulletin);
     }
  
     /**
@@ -62,7 +65,7 @@ class BulletinController extends Controller
     public function edit($id)
     {
         $bulletin = BulletinModel::find($id);
-        return view('Manage Bulletin.KABulletinEdit')->with('bulletins', $bulletin);
+        return view('Manage Bulletin.KAFA Admin.KABulletinEdit')->with('bulletins', $bulletin);
     }
  
     /**
@@ -90,5 +93,33 @@ class BulletinController extends Controller
     {
         BulletinModel::destroy($id);
         return redirect('bulletin')->with('flash_message', 'Bulletin deleted!');  
+    }
+
+    // <--Parents-->
+
+    public function indexparents()
+    {
+        $bulletins = BulletinModel::all();
+        return view ('Manage Bulletin.Parents.ParentsBulletinList')->with('bulletins', $bulletins);
+    }
+
+    public function showparents($id)
+    {
+        $bulletin = BulletinModel::find($id);
+        return view('Manage Bulletin.Parents.ParentsBulletinView')->with('bulletin', $bulletin);
+    }
+
+    // <--Teacher-->
+
+    public function indexteacher()
+    {
+        $bulletins = BulletinModel::all();
+        return view ('Manage Bulletin.Teacher.TeacherBulletinList')->with('bulletins', $bulletins);
+    }
+
+    public function showteacher($id)
+    {
+        $bulletin = BulletinModel::find($id);
+        return view('Manage Bulletin.Teacher.TeacherBulletinView')->with('bulletin', $bulletin);
     }
 }
