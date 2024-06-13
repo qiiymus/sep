@@ -37,7 +37,8 @@ class AuthManager extends Controller
             'birthcert'=>'required',
             'std_bdate'=>'required',
             'std_age'=>'required',
-            'std_address'=>'required'
+            'std_address'=>'required',
+            'std_class'=>'required',
         ]);
 
         $data['Name']=$request->std_name;
@@ -46,6 +47,7 @@ class AuthManager extends Controller
         $data['Birthdate']=$request->std_bdate;
         $data['Age']=$request->std_age;
         $data['Address']= $request->std_address;
+        $data['class']=$request->std_class;
         $user=UserModel::create($data);
 
         if (!$user){
