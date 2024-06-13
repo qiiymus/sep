@@ -16,8 +16,6 @@ Route::get('/ManageKAFATimetable', [TimetableController::class], 'TeacherViewTT'
 Route::get('/ManageKAFATimetable', [TimetableController::class], 'KAViewTT');
 
 
-
-
 Route::get('/login', [AuthManager::class, 'login'])->name('login');
 Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
 Route::get('/registration',[AuthManager::class, 'registration'])->name('registration');
@@ -37,7 +35,24 @@ Route::get('/MAViewAR',[ReportController::class,'MAViewAR'])->name('MAViewAR');
 Route::get('/MAViewPR',[ReportController::class,'MAViewPR'])->name('MAViewPR');
 
 
-Route::resource("/bulletin", BulletinController::class);
+// <--KAFA ADMIN BULLETIN-->
+Route::get('/bulletin', [BulletinController::class, 'index'])->name('bulletin.index');
+Route::get('/bulletin/create', [BulletinController::class, 'create'])->name('bulletin.create');
+Route::post('/bulletin', [BulletinController::class, 'store'])->name('bulletin.store');
+Route::get('/bulletin/{id}', [BulletinController::class, 'show'])->name('bulletin.show');
+Route::get('/bulletin/{id}/edit', [BulletinController::class, 'edit'])->name('bulletin.edit');
+Route::patch('/bulletin/{id}', [BulletinController::class, 'update'])->name('bulletin.update');
+Route::delete('/bulletin/{id}', [BulletinController::class, 'destroy'])->name('bulletin.destroy');
+
+// <--PARENTS BULLETIN-->
+
+Route::get('/bulletinParents',[BulletinController::class, 'indexparents']);
+Route::get('/viewbulletinParents/{id}', [BulletinController::class, 'showparents'])->name('viewbulletinParents');
+
+// <--TEACHER BULLETIN-->
+
+Route::get('/bulletin/teachers', [BulletinController::class, 'indexteacher']);
+Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher'])->name('bulletin.viewteacher');
 
 
 // Root route for results
