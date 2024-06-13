@@ -15,17 +15,26 @@ class ResultController extends Controller
      */
     
         //
-        public function ChooseClass(){
-            return view('ManageStudentResults.KAChooseClassPage');
-        }
-    
-        public function index(): View
+        public function ChooseClass()
         {
-            $class = ResultModel::all();
-            return view ('ManageStudentResults.KAStudentList')->with('ManageStudentResults', $class);
+            // Fetch unique class names from the database
+            $classes = ResultModel::select('class')->distinct()->get()->pluck('class');
+            
+            // Pass the classes to the view
+            return view('ManageStudentResults.KAChooseClassPage', compact('classes'));
         }
     
-
+        public function index(Request $request)
+        {
+            $class = $request->input('class');
+    
+            // Fetch students from the selected class
+            $students = ResultModel::where('class', $class)->get();
+    
+            // Pass the students and the class name to the view
+            return view('ManageStudentResults.KAStudentList', compact('students', 'class'));
+        }
+    
     /**
      * Show the form for creating a new resource.
      */

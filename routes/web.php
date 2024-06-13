@@ -55,7 +55,6 @@ Route::get('/bulletin/teachers', [BulletinController::class, 'indexteacher']);
 Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher'])->name('bulletin.viewteacher');
 
 
-// Root route for results
-Route::get('/', [ResultController::class, 'ChooseClass']);
+// Routes for ResultController
+Route::get('/ManageStudentResults', [ResultController::class, 'ChooseClass'])->name('ManageStudentResults.ChooseClass');
 Route::get('/ManageStudentResults/KAStudentList', [ResultController::class, 'index'])->name('ManageStudentResults.index');
-Route::resource('/ManageStudentResults', ResultController::class);
