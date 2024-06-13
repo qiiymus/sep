@@ -1,6 +1,8 @@
 {{-- KABulletinView --}}
-
+@include('include.header')
 @extends('Manage Bulletin.layouts')
+<div class="d-flex">
+    @include('include.parentmenu')
 @section('content')
   
 <div class="card" style="margin:20px;">
@@ -21,5 +23,6 @@
       <p class="card-text">Isi : {{ $bulletin->isi }}</p><hr>
     </div>
   </div>
+</div>
 </div>
 @endsection

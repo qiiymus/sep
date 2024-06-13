@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\ReportController;
-use app\Http\Controllers\TimetableController;
+use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\BulletinController;
 use App\Http\Controllers\ResultController;
 
@@ -11,9 +11,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ManageKAFATimetable', [TimetableController::class], 'ParentsViewTT');
-Route::get('/ManageKAFATimetable', [TimetableController::class], 'TeacherViewTT');
-Route::get('/ManageKAFATimetable', [TimetableController::class], 'KAViewTT');
+Route::get('/ParentViewTT', [TimetableController::class, 'ParentViewTT'])->name('ParentViewTT');
+Route::get('/TeacherViewTT', [TimetableController::class, 'TeacherViewTT'])->name('TeacherViewTT');
+Route::get('/KAViewTT', [TimetableController::class, 'KAViewTT'])->name('KAViewTT');
+Route::get('/KAAddTT', [TimetableController::class, 'KAAddTT'])->name('KAAddTT');
+Route::get('/KAEditTT', [TimetableController::class, 'KAEditTT'])->name('KAEditTT');
+Route::get('/KAManageTT', [TimetableController::class, 'KAManageTT'])->name('KAManageTT');
+
 
 
 Route::get('/login', [AuthManager::class, 'login'])->name('login');

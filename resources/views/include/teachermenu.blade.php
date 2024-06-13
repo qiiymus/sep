@@ -38,8 +38,9 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="sidebars.css" rel="stylesheet">
+  <link href="sidebars.css" rel="stylesheet">
   </head>
+  
   <body>
     <div class="d-flex flex-column flex-shrink-0" style="width: 3.5rem; background-color: #b0d9e2; height: 100vh;">
       <a href="/" class="d-block p-3 link-dark text-decoration-none text-center" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
@@ -86,14 +87,13 @@
         </ul>
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq6s6j6p3uT0Kk7RV4MdOW4HFX8d8C94qppk8KzFY6N5sk7vFb" crossorigin="anonymous"></script>
-    <script>
-      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-      });
-    </script>
   </body>
+
+<!-- JavaScript for Bootstrap Tooltips -->
+<script>
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+</script>
 </html>

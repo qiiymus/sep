@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Timetable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -11,15 +12,27 @@ use Illuminate\View\View;
 class TimetableController extends Controller
 {
     public function ParentViewTT() {
-        return view('ManageKAFATimetable.ParentsTimetablePage');
+        return view('Manage KAFA Timetable.ParentsTimetablePage');
     }
 
     public function TeacherViewTT() {
-        return view('ManageKAFATimetable.TeacherTimetablePage');
+        return view('Manage KAFA Timetable.TeacherTimetablePage');
     }
 
     public function KAViewTT() {
-        return view('ManageKAFATimetable.AdminTimetablePage');
+        return view('Manage KAFA Timetable.AdminTimetablePage');
+    }
+
+    public function KAAddTT() {
+        return view('Manage KAFA Timetable.AdminAddTimetable');
+    }
+
+    public function KAEditTT() {
+        return view('Manage KAFA Timetable.AdminEditTimetable');
+    }
+
+    public function KAManageTT() {
+        return view('Manage KAFA Timetable.AdminManageTimetable');
     }
 
     //Display a listing of the resource.

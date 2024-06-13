@@ -1,5 +1,5 @@
 {{-- KABulletinView --}}
-
+@include('include.header')
 @extends('Manage Bulletin.layouts')
 <div class="d-flex">
 @include('include.KAmenu')
@@ -27,4 +27,4 @@
   </div>
 </div>
 </div>
-
+@endsection
