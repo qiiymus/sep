@@ -60,7 +60,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link py-3 border-bottom" title="Timetable" data-bs-toggle="tooltip" data-bs-placement="right">
+      <a href="{{ route('KAManageTT') }}" class="nav-link py-3 border-bottom" title="Timetable" data-bs-toggle="tooltip" data-bs-placement="right">
         <img src="{{ asset('img/timetable (g).png') }}" width="24" height="24" alt="Timetable">
       </a>
     </li>
