@@ -62,7 +62,7 @@ class BulletinController extends Controller
     public function edit($id)
     {
         $bulletin = BulletinModel::find($id);
-        return view('bulletins.edit')->with('bulletins', $bulletin);
+        return view('Manage Bulletin.KABulletinEdit')->with('bulletins', $bulletin);
     }
  
     /**
