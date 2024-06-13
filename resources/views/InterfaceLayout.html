@@ -1,0 +1,19 @@
+@extends('layout')
+@section('title', '//put ur title')
+@section('content')
+<head>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <style>
+    /*Put ur css here*/
+  </style>
+</head>
+
+<body>
+    <div class="content-wrapper">
+    @include('include.parentmenu')
+    <div class="main">
+        <!--Put ur content here-->
+    </div>
+    </div>
+</body>
+@endsection
