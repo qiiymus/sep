@@ -71,8 +71,8 @@ Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher
 
 
 // Routes for ResultController
-Route::get('/ManageStudentResults', [ResultController::class, 'ChooseClass'])->name('ManageStudentResults.ChooseClass');
-Route::get('/ManageStudentResults/KAStudentList', [ResultController::class, 'index'])->name('ManageStudentResults.index');
-Route::get('/ManageStudentResults/{id}/KAResultPage', [ResultController::class, 'show'])->name('ManageStudentResults.show');
+Route::get('/ManageStudentResults', [AuthManager::class, 'ChooseClass'])->name('ManageStudentResults.ChooseClass');
+Route::get('/ManageStudentResults/KAStudentList', [AuthManager::class, 'index'])->name('ManageStudentResults.index');
+Route::get('/ManageStudentResults/{id}/KAResultPage', [AuthManager::class, 'show'])->name('ManageStudentResults.show');
 
 Route::resource('/bulletin', BulletinController::class);

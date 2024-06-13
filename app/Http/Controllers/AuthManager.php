@@ -89,11 +89,7 @@ class AuthManager extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
- 
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -157,6 +153,34 @@ class AuthManager extends Controller
         Session::flash('success', 'User deleted successfully');
         return redirect()->route('user.index');
     }
+
+    public function ChooseClass()
+        {
+            // Fetch unique class names from the database
+            $classes = UserModel::select('class')->distinct()->get()->pluck('class');
+            
+            // Pass the classes to the view
+            return view('ManageStudentResults.KAChooseClassPage', compact('classes'));
+        }
+    
+        public function index(Request $request)
+        {
+            $class = $request->input('class');
+    
+            // Fetch students from the selected class
+            $students = UserModel::where('class', $class)->get();
+    
+            // Pass the students and the class name to the view
+            return view('ManageStudentResults.KAStudentList', compact('students', 'class'));
+        }
+    
+        public function show($id)
+        {
+            // Fetch student details
+            $student = UserModel::findOrFail($id);
+    
+            return view('ManageStudentResults.KAResultPage', compact('student'));
+        }
 
 
 function logout(){

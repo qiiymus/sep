@@ -29,10 +29,12 @@
 
 <div class="card">
     <div class="card-header">
-        <span class="label">Nama Pelajar:</span>{{ $student->name }}
+        <span class="label">Nama Pelajar:</span>{{ $student->Name }}
     </div>
     <div class="card-body">
         <span class="label">Kelas:</span>{{ $student->class }}
     </div>
 </div>
+
 @endsection
+

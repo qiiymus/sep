@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('Address');
             $table->timestamps();
             $table->string('class');
-            $table->string('student_id');
         });
     }
 
