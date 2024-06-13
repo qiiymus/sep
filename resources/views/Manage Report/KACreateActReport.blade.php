@@ -8,6 +8,7 @@
             <h2 style="color:#2d532d">Borang Laporan Aktiviti</h2><br>
         </div>
         <form action="{{route('KACreateAR.post')}}" method="POST">
+            @csrf
             <table class="table table-borderless">
                 <tr>
                     <td scope="col">Nama Aktiviti:</td>
