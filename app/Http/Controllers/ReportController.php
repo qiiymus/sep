@@ -6,6 +6,7 @@ use App\Models\ReportModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Hash;
+use App\Models\ReportModel;
 
 class ReportController extends Controller
 {
