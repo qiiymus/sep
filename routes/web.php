@@ -11,21 +11,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//timetable
 Route::get('/ParentViewTT', [TimetableController::class, 'ParentViewTT'])->name('ParentViewTT');
 Route::get('/TeacherViewTT', [TimetableController::class, 'TeacherViewTT'])->name('TeacherViewTT');
 Route::get('/KAViewTT', [TimetableController::class, 'KAViewTT'])->name('KAViewTT');
 Route::get('/KAAddTT', [TimetableController::class, 'KAAddTT'])->name('KAAddTT');
 Route::get('/KAEditTT', [TimetableController::class, 'KAEditTT'])->name('KAEditTT');
 Route::get('/KAManageTT', [TimetableController::class, 'KAManageTT'])->name('KAManageTT');
+Route::resource('timetable', TimetableController::class);
+Route::get('/ShowTimetable/{id}', [TimetableController::class, 'show'])->name('timetable.show');
+Route::get('/EditTimetable/{id}', [TimetableController::class, 'edit'])->name('timetable.edit');
+Route::patch('/UpdateTimetable/{id}', [TimetableController::class, 'update'])->name('timetable.update');
+Route::delete('/DeleteTimetable/{id}', [TimetableController::class, 'destroy'])->name('timetable.destroy');
 
-
-
+//login
 Route::get('/login', [AuthManager::class, 'login'])->name('login');
 Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
 Route::get('/registration',[AuthManager::class, 'registration'])->name('registration');
 Route::post('/registration', [AuthManager::class, 'registrationPost'])->name('registration.post');
 Route::get('/logout',[AuthManager::class,'logout'])->name('logout');
 
+//report
 Route::get('/KAReport',[ReportController::class,'KAReport'])->name('KAReport');
 Route::get('/KACreateAR',[ReportController::class,'KACreateAR'])->name('KACreateAR');
 //Route::get('/KACreateAR',[ReportController::class,'KACreateARPost'])->name('KACreateAR.post');
