@@ -4,14 +4,16 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class ReportModel extends Model
 {
     use HasFactory, Notifiable;
 
     protected $table = "activity report";
+    protected $primarykey = "AR_ID";
 
     /**
      * The attributes that are mass assignable.
@@ -19,14 +21,29 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'std_image',
-        'std_name',
-        'mykid',
-        'birthcert',
-        'std_bdate',
-        'std_age',
-        'std_address',
+        'Name',
+        'Type',
+        'Activity_Date',
+        'StartTime',
+        'EndTime',
+        'Teacher_ID',
+        'Location',
+        'Description',
+        'Report_Date',
+        'ReportType_ID',
+        'ReportStatus_ID',
     ];
+
+    public function reportType()
+    {
+        return $this->belongsTo(ReportType::class, 'ReportType_ID');
+    }
+
+    public function reportStatus()
+    {
+        return $this->belongsTo(ReportStatus::class, 'ReportStatus_ID');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -50,4 +67,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+}
+
+class ReportType extends Model
+{
+    protected $table = "report_type";
+    protected $fillable = ['Type'];
+}
+
+class ReportStatus extends Model
+{
+    protected $table = "report_status";
+    protected $fillable = ['status'];
 }
