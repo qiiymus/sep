@@ -13,11 +13,13 @@
         .main {
             flex-grow: 1;
             margin: 1.5rem;
+            margin-left: 4rem;
             padding: 20px;
         }
         .main h1 {
             color: #18392b;
             font-weight: bold;
+            margin-bottom: 10px; /* Added margin for better spacing */
         }
         .schedule {
             margin-top: 20px;
@@ -25,6 +27,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 10px; /* Adjusted margin for better spacing */
         }
         th, td {
             text-align: center;
@@ -35,16 +38,27 @@
             background-color: #9FB996;
         }
         button {
-            margin-top: 20px;
             background-color: green;
             color: white;
             padding: 10px 20px;
             border: none;
             cursor: pointer;
             border-radius: 10px;
+            margin-right: 10px; /* Added margin-right for button spacing */
         }
         .button-container {
             text-align: center;
+            margin-top: 20px; /* Adjusted margin for better spacing */
+        }
+        .button-container form {
+            display: inline; /* Ensures forms are inline */
+            margin: 0;
+        }
+        .kelas-ustazah-container {
+            display: flex;
+            padding: 10px;
+            justify-content: space-between; /*Align items with space between */
+            margin-right: 400px;
         }
     </style>
 </head>
@@ -54,8 +68,10 @@
     @include('include.KAmenu')
     <div class="main flex-grow-1">
         <h1>Jadual Waktu Kelas</h1>
-        <p><b>Kelas:</b> {{ $timetable->kelas }}</p>
-        <p><b>Ustazah:</b> {{ $timetable->ustazah }}</p>
+        <div class="kelas-ustazah-container">
+            <h5><b>Kelas: {{ $timetable->kelas }}</b></h5>
+            <h5><b>Ustazah: {{ $timetable->ustazah }}</b></h5>
+        </div>
         <section class="schedule">
             <table>
                 <tr>
@@ -87,10 +103,10 @@
             </table>
         </section>
         <div class="button-container">
-            <form action="{{ route('KAManageTT') }}" method="GET" style="margin: 0;">
+            <form action="{{ route('KAManageTT') }}" method="GET">
                 <button type="submit">Kembali</button>
             </form>
-            <form action="{{ route('timetable.edit', $timetable->id) }}" method="GET" style="margin: 0;">
+            <form action="{{ route('timetable.edit', $timetable->id) }}" method="GET">
                 <button type="submit">Kemaskini</button>
             </form>
         </div>

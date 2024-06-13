@@ -12,6 +12,7 @@
         .main {
             flex-grow: 1;
             margin: 1.5rem;
+            margin-left: 4rem;
             padding: 20px;
         }
         .main h1 {

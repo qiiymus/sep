@@ -10,6 +10,7 @@
         .main {
             flex-grow: 1;
             margin: 1.5rem;
+            margin-left: 4rem;
             padding: 20px;
         }
         .image-container {
@@ -69,6 +70,10 @@
         .button-container {
             text-align: center;
         }
+        .kelas-ustazah-container {
+            display: flex;
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -79,14 +84,16 @@
         <h1>Jadual Waktu Kelas</h1>
         <form action="{{ route('timetable.store') }}" method="POST">
             @csrf
-            <div class="form-inline">
-                <label for="kelas">Kelas:</label>
-                <input type="text" id="kelas" name="kelas">
-            </div>
+            <div class="kelas-ustazah-container">
+                <div class="form-inline">
+                    <label for="kelas">Kelas:</label>
+                    <input type="text" id="kelas" name="kelas">
+                </div>
 
-            <div class="form-inline">
-                <label for="ustazah">Ustazah:</label>
-                <input type="text" id="ustazah" name="ustazah">
+                <div class="form-inline">
+                    <label for="ustazah">Ustazah:</label>
+                    <input type="text" id="ustazah" name="ustazah">
+                </div>
             </div>
             <section class="schedule">
                 <table>

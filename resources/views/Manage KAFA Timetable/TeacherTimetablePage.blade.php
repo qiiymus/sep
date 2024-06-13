@@ -14,6 +14,7 @@
     .main {
       flex-grow: 1;
       margin: 1.5rem;
+      margin-left: 4rem;
       padding: 20px;
     }
     .main h1 {
@@ -42,7 +43,7 @@
   @include('include.teachermenu')
   <div class="main flex-grow-1">
     <h1>Jadual Waktu Kelas</h1>
-    <p><b>Kelas:</b></p>
+    <h6><b>Kelas:</b></h6>
     <section class="schedule">
       <table>
         <tr>

@@ -10,6 +10,7 @@
         .main {
             flex-grow: 1;
             margin: 1.5rem;
+            margin-left: 4rem;
             padding: 20px;
         }
         .main h1 {
@@ -25,10 +26,10 @@
             border-radius: 50%;
         }
         .form-inline {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-    	}
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+        }
         .form-inline label {
             margin: 5px 10px 5px 0;
         }
@@ -57,16 +58,21 @@
         }
         
         button {
-        	margin-top:20px;
             background-color: green;
             color: white;
             padding: 10px 20px;
             border: none;
             cursor: pointer;
             border-radius: 10px;
-      	}
+            margin-right: 10px; /* Added margin-right for button spacing */
+        }
         .button-container {
             text-align: center;
+            margin-top: 20px; /* Adjusted margin for better spacing */
+        }
+        .button-container form {
+            display: inline; /* Ensures forms are inline */
+            margin: 0;
         }
     </style>
 </head>
@@ -76,15 +82,20 @@
     <div class="main flex-grow-1">
         <h1>Jadual Waktu Kelas</h1>
         <form action="{{ route('timetable.update', $timetable->id) }}" method="POST">
-            <div class="form-inline">
-                <label for="kelas">Kelas:</label>
-                <input type="text" id="kelas" name="kelas" value="{{ $timetable->kelas }}" required>
+            @csrf
+            @method('PATCH')
+            <div class="kelas-ustazah-container">
+                <div class="form-inline">
+                    <label for="kelas">Kelas:</label>
+                    <input type="text" id="kelas" name="kelas" value="{{ $timetable->kelas }}" required>
+                </div>
+
+                <div class="form-inline">
+                    <label for="ustazah">Ustazah:</label>
+                    <input type="text" id="ustazah" name="ustazah" value="{{ $timetable->ustazah }}" required>
+                </div>
             </div>
 
-            <div class="form-inline">
-                <label for="ustazah">Ustazah:</label>
-                <input type="text" id="ustazah" name="ustazah" value="{{ $timetable->ustazah }}" required>
-            </div>
             <section class="schedule">
                 <table>
                     <thead>
@@ -119,10 +130,18 @@
                     </tbody>
                 </table>
             </section>
-        <div class="button-container">
-            <button type="submit">Simpan</button>
-            <button type="reset">Batal</button>
-        </div>
+
+            <div class="button-container">
+                <form action="{{ route('KAViewTT') }}" method="GET">
+                    <button type="submit">Batal</button>
+                </form>
+                <form action="{{ route('timetable.update', $timetable->id) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit">Kemaskini</button>
+                </form>
+            </div>
+        </form>
     </div>
 </div>
 
