@@ -1,0 +1,23 @@
+@include('include.header')
+@extends('layout')
+@section('title', '//put ur title')
+@section('content')
+<head>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <style>
+    .content-wrapper {
+      display: flex;
+    }
+    /*Put ur css here*/
+  </style>
+</head>
+
+<body>
+    <div class="content-wrapper d-flex">
+    @include('include.//ur sidebar menu')
+    <div class="main flex-grow-1">
+        <!--Put ur content here-->
+    </div>
+    </div>
+</body>
+@endsection

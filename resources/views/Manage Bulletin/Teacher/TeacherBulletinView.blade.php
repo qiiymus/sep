@@ -4,7 +4,11 @@
 <div class="d-flex">
     @include('include.teachermenu')
 @section('content')
-  
+<style>
+  .card-header {
+      background-color: #B0D9E2;
+  }
+</style>
 <div class="card" style="margin:20px;">
     <div class="card-header">
       <h1>KAFA Bulletin</h1>
