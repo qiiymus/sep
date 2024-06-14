@@ -6,6 +6,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\BulletinController;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,7 +44,7 @@ Route::get('/home', [UserController::class, 'KAHome'])->name('KAHome');
 Route::get('/KAReport',[ReportController::class,'KAReport'])->name('KAReport');
 Route::get('/KACreateAR',[ReportController::class,'KACreateAR'])->name('KACreateAR');
 Route::post('/KACreateAR',[ReportController::class,'KACreateARPost'])->name('KACreateAR.post');
-Route::get('KAEditAR/{id}/edit',[ReportController::class,'edit'])->name('KAEditAR.edit');
+Route::get('KAEditAR',[ReportController::class,'edit'])->name('KAEditAR');
 Route::post('KAEditAR/{id}',[ReportController::class,'update'])->name('KAEditAR.post');
 Route::get('/KAViewAR',[ReportController::class,'KAViewAR'])->name('KAViewAR');
 Route::get('/KACreatePR',[ReportController::class,'KACreatePR'])->name('KACreatePR');
@@ -53,7 +54,18 @@ Route::get('/KAViewPR',[ReportController::class,'KAViewPR'])->name('KAViewPR');
 Route::get('/MAReport',[ReportController::class,'MAReport'])->name('MAReport');
 Route::get('/MAViewAR',[ReportController::class,'MAViewAR'])->name('MAViewAR');
 Route::get('/MAViewPR',[ReportController::class,'MAViewPR'])->name('MAViewPR');
-
+Route::get('/KAViewReport/{id}', [ReportController::class, 'kashow'])->name('report.kashow');
+Route::get('/EditReport/{id}', [ReportController::class, 'edit'])->name('report.edit');
+Route::patch('/UpdateReport/{id}', [ReportController::class, 'update'])->name('report.update');
+Route::delete('/DeleteReport/{id}', [ReportController::class, 'destroy'])->name('report.destroy');
+Route::get('/MAViewReport/{id}', [ReportController::class, 'mashow'])->name('report.mashow');
+/*Route::get('/download',function(){
+    $data=[
+        'activity report'=>ReportModel::all()
+    ];
+    $pdf=Pdf::LoadView('KAViewActReport',$data);
+    return $pdf->download('report-pdf.pdf');
+});*/
 
 
 // <--KAFA ADMIN BULLETIN-->

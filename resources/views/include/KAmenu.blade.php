@@ -55,7 +55,7 @@
   </a>
   <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
     <li class="nav-item">
-      <a href="{{ route ('ChooseClass') }}" class="nav-link py-3 border-bottom" title="Result" data-bs-toggle="tooltip" data-bs-placement="right">
+      <a href="{{ route ('ManageStudentResults.ChooseClass') }}" class="nav-link py-3 border-bottom" title="Result" data-bs-toggle="tooltip" data-bs-placement="right">
         <img src="{{ asset('img/medal (g).png') }}" width="24" height="24" alt="Result">
       </a>
     </li>
@@ -70,8 +70,8 @@
       </a>
     </li>
     <li>
-      <a href="{{ route ('bullletin.index) }}" class="nav-link py-3 border-bottom" title="Bulletin" data-bs-toggle="tooltip" data-bs-placement="right">
-        <img src="{{ asset('img/bulletin (g).png') }}" width="24" height="24" alt="Bulletin">
+      <a href="{{ route ('bulletin.index') }}" class="nav-link py-3 border-bottom" title="Report" data-bs-toggle="tooltip" data-bs-placement="right">
+        <img src="{{ asset('img/bulletin (g).png') }}" width="24" height="24" alt="Report">
       </a>
     </li>
     <li>

@@ -24,6 +24,7 @@
                     <option value="teacher">Pencapaian</option>
                 </select>
                 </td>
+                <td></td>
             </tr>
         </table>
     
@@ -39,14 +40,37 @@
                 </tr>
             </thead>
             <tbody>
+            @foreach($report as $index => $row)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td>{{ $row->Name }}</td>
+                    <td>LA00{{ $row->id }}/2024</td>
+                    <td>{{ $row->Report_Date }}</td>
+                    <td>{{ $row->Type }}</td>
+                    <td>{{ $row->status }}</td>
+                    <td>
+                    <form action="{{ route('report.mashow', $row->id) }}" method="GET" style="margin: 0">
+                        <button type="submit" class="btn">
+                            <img src="img\eye.png" alt="Papar" style="width:20px;height:20px;">
+                        </button>
+                    </form>
+                    <form action="{{ route('report.edit', $row->id) }}" method="GET" style="margin: 0">
+                        <button type="submit" class="btn">
+                            <img src="img\pen.png" alt="Kemaskini" style="width:20px;height:20px;">
+                        </button>
+                    </form>
+                    <form action="{{ route('report.destroy', $row->id) }}" method="POST" style="margin: 0;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn">
+                            <img src="img\trash-bin.png" alt="Padam" style="width:15px;height:15px;">
+                        </button>
+                    </form>
+                    <button class="btn" href= "#" title="Muat Turun">
+                        <img src="img\direct-download.png" alt="Muat Turun" style="width:20px;height:20px;">
+                    </button>
+                    </td>
                 </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
