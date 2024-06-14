@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\RegistrationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,12 +33,21 @@ Route::delete('/DeleteTimetable/{id}', [TimetableController::class, 'destroy'])-
 Route::get('/ka-choose-class', [ResultController::class, 'showKAChooseClassPage'])->name('ka.choose.class');
 
 //login
-Route::get('/login', [UserController::class, 'login'])->name('login');
+/*Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'loginPost'])->name('login.post');
 Route::get('/registration',[UserController::class, 'registration'])->name('registration');
 Route::post('/registration', [UserController::class, 'registrationPost'])->name('registration.post');
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
-Route::get('/home', [UserController::class, 'KAHome'])->name('KAHome');
+Route::get('/home', [UserController::class, 'KAHome'])->name('KAHome');*/
+
+// Login routes
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Registration routes
+Route::get('/registration', [RegistrationController::class, 'showRegistrationForm'])->name('registration');
+Route::post('/registration', [RegistrationController::class, 'register'])->name('registration.post');
 
 
 //report
@@ -74,8 +85,6 @@ Route::get('/viewbulletinParents/{id}', [BulletinController::class, 'showparents
 
 Route::get('/bulletinTeachers', [BulletinController::class, 'indexteacher']);
 Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher'])->name('bulletin.viewteacher');
-
-
 
 // Routes for ResultController
 Route::get('/ManageStudentResults', [AuthManager::class, 'ChooseClass'])->name('ManageStudentResults.ChooseClass');
