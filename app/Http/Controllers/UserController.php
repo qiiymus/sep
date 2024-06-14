@@ -7,27 +7,36 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Hash;
 
-class AuthManager extends Controller
+class UserController extends Controller
 {
     function login(){
-        return view('login');
+        return view('Manage User Profile.LoginPage');
     }
 
     function registration(){
-        return view('register');
+        return view('Manage User Profile.ParentRegister');
     }
+
+    function KAHome(){
+        return view('KAHome');
+    }
+
 
     function loginPost(Request $request){
         $request->validate([
-            'email'=>'required',
-            'password'=>'required'
+            'user_id'=>'required',
+            'password'=>'required',
+            'user_type'=>'required',
         ]);
 
-        $credentials=$request->only('email','password');
+        $credentials=$request->only('user_id','password','user_type');
         if(Auth::attempt($credentials)){
-            return redirect()->intended(route('home'))->with("success","Login successful");
+            if(Auth::user_type(1))
+            {
+                return redirect()->intended(route('KAHome'))->with("success","Login successful");
+            }
         }
-        return redirect(route('login'))->with("error","Login details are invalid");
+        return redirect(route('LoginPage'))->with("error","Login details are invalid");
     }
 
     function registrationPost(Request $request){
@@ -96,7 +105,7 @@ class AuthManager extends Controller
     public function edit($id)
     {
         $title = "Update User";
-        $edit = User::findOrFail($id);
+        $edit = UserModel::findOrFail($id);
         return view('admin.add_edit_user', compact('edit', 'title'));
     }
  

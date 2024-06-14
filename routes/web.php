@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthManager;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TimetableController;
@@ -23,16 +23,21 @@ Route::get('/ShowTimetable/{id}', [TimetableController::class, 'show'])->name('t
 Route::get('/EditTimetable/{id}', [TimetableController::class, 'edit'])->name('timetable.edit');
 Route::patch('/UpdateTimetable/{id}', [TimetableController::class, 'update'])->name('timetable.update');
 Route::delete('/DeleteTimetable/{id}', [TimetableController::class, 'destroy'])->name('timetable.destroy');
+//Route::get('/ShowTimetableParent/{id}', [TimetableController::class, 'pshow'])->name('timetable.pshow');
+//Route::get('/ShowTimetableTeacher/{id}', [TimetableController::class, 'tshow'])->name('timetable.tshow');
+
 
 //result
 Route::get('/ka-choose-class', [ResultController::class, 'showKAChooseClassPage'])->name('ka.choose.class');
 
 //login
-Route::get('/login', [AuthManager::class, 'login'])->name('login');
-Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
-Route::get('/registration',[AuthManager::class, 'registration'])->name('registration');
-Route::post('/registration', [AuthManager::class, 'registrationPost'])->name('registration.post');
-Route::get('/logout',[AuthManager::class,'logout'])->name('logout');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/login', [UserController::class, 'loginPost'])->name('login.post');
+Route::get('/registration',[UserController::class, 'registration'])->name('registration');
+Route::post('/registration', [UserController::class, 'registrationPost'])->name('registration.post');
+Route::get('/logout',[UserController::class,'logout'])->name('logout');
+Route::get('/home', [UserController::class, 'KAHome'])->name('KAHome');
+
 
 //report
 Route::get('/KAReport',[ReportController::class,'KAReport'])->name('KAReport');

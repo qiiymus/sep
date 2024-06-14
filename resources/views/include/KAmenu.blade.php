@@ -65,12 +65,12 @@
       </a>
     </li>
     <li>
-      <a href="KAReport" class="nav-link py-3 border-bottom" title="Report" data-bs-toggle="tooltip" data-bs-placement="right">
+      <a href="#" class="nav-link py-3 border-bottom" title="Report" data-bs-toggle="tooltip" data-bs-placement="right">
         <img src="{{ asset('img/report (g).png') }}" width="24" height="24" alt="Report">
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link py-3 border-bottom" title="Bulletin" data-bs-toggle="tooltip" data-bs-placement="right">
+      <a href=# class="nav-link py-3 border-bottom" title="Bulletin" data-bs-toggle="tooltip" data-bs-placement="right">
         <img src="{{ asset('img/bulletin (g).png') }}" width="24" height="24" alt="Bulletin">
       </a>
     </li>
