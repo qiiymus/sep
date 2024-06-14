@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ResultModel extends Model
 {
     use HasFactory;
-    protected $table = 'class';
+    protected $table = 'results';
     protected $primaryKey = 'id';
-    protected $fillable = ['name','class'];
+    protected $fillable = ['subject','marks','grade'];
+
 }

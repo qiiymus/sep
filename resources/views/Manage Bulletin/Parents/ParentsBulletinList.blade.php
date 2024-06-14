@@ -4,6 +4,11 @@
 <div class="d-flex">
     @include('include.parentmenu')
 @section('content')
+<style>
+    .card-header {
+        background-color: #FFF6A0;
+    }
+  </style>
     <div class="container">
         <div class="row" style="margin:20px;">
             <div class="col-12">
@@ -35,10 +40,11 @@
                                         <td>{{ $item->tarikh }}</td> <!-- Ensure the column name matches exactly -->
                                         <td>{{ $item->kepentingan }}</td> <!-- Ensure the column name matches exactly -->
                                         <td>{{ $item->status }}</td> <!-- Ensure the column name matches exactly -->
-
                                         <td>
                                             <a href="{{ url('/viewbulletinParents/' . $item->id) }}" title="View Bulletin">
-                                                <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Lihat</button>
+                                                <button class="btn btn-info btn-sm" style="background-color: #FFF6A0; border-color: #FFF6A0;">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i> Lihat
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>
@@ -50,7 +56,7 @@
                     </div>
                 </div>
                 <br/>
-                        <br/>
+                <br/>
             </div>
             
         </div>

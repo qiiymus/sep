@@ -6,6 +6,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\ResultController;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 Route::get('/', function () {
@@ -27,9 +28,6 @@ Route::delete('/DeleteTimetable/{id}', [TimetableController::class, 'destroy'])-
 //Route::get('/ShowTimetableParent/{id}', [TimetableController::class, 'pshow'])->name('timetable.pshow');
 //Route::get('/ShowTimetableTeacher/{id}', [TimetableController::class, 'tshow'])->name('timetable.tshow');
 
-
-//result
-Route::get('/ka-choose-class', [ResultController::class, 'showKAChooseClassPage'])->name('ka.choose.class');
 
 //login
 Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -76,22 +74,23 @@ Route::get('/bulletin/{id}', [BulletinController::class, 'show'])->name('bulleti
 Route::get('/bulletin/{id}/edit', [BulletinController::class, 'edit'])->name('bulletin.edit');
 Route::patch('/bulletin/{id}', [BulletinController::class, 'update'])->name('bulletin.update');
 Route::delete('/bulletin/{id}', [BulletinController::class, 'destroy'])->name('bulletin.destroy');
-
 // <--PARENTS BULLETIN-->
-
 Route::get('/bulletinParents',[BulletinController::class, 'indexparents']);
 Route::get('/viewbulletinParents/{id}', [BulletinController::class, 'showparents'])->name('viewbulletinParents');
-
 // <--TEACHER BULLETIN-->
-
 Route::get('/bulletinTeachers', [BulletinController::class, 'indexteacher']);
 Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher'])->name('bulletin.viewteacher');
-
-
-
-// Routes for ResultController
-Route::get('/ManageStudentResults', [AuthManager::class, 'ChooseClass'])->name('ManageStudentResults.ChooseClass');
-Route::get('/ManageStudentResults/KAStudentList', [AuthManager::class, 'index'])->name('ManageStudentResults.index');
-Route::get('/ManageStudentResults/{id}/KAResultPage', [AuthManager::class, 'show'])->name('ManageStudentResults.show');
-
 Route::resource('/bulletin', BulletinController::class);
+
+
+// Routes for Result
+Route::get('/ManageStudentResults', [ResultController::class, 'chooseClass'])->name('ManageStudentResults.ChooseClass');
+Route::get('/ManageStudentResults/{id}/KAResultPage', [ResultController::class, 'show'])->name('ManageStudentResults.show');
+Route::get('/ManageStudentResults/KAAddResult', [ResultController::class, 'create'])->name('ManageStudentResults.create');
+Route::post('/ManageStudentResults/KAResultPage', [ResultController::class, 'store'])->name('ManageStudentResults.store');
+Route::get('/ManageStudentResults/{id}/edit', [ResultController::class, 'edit'])->name('ManageStudentResults.edit');
+Route::patch('/ManageStudentResults/{id}', [ResultController::class, 'update'])->name('ManageStudentResults.update');
+Route::delete('/ManageStudentResults/{id}', [ResultController::class, 'destroy'])->name('ManageStudentResults.destroy');
+Route::get('/KAResultPage', [ResultController::class, 'index'])->name('kareresults.index');
+Route::get('/choose-class', [ResultController::class, 'chooseClass'])->name('choose.class');
+Route::get('/students-list', [ResultController::class, 'listStudents'])->name('students.list');

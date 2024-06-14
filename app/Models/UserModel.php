@@ -55,4 +55,5 @@ class UserModel extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
 }

@@ -4,6 +4,11 @@
 <div class="d-flex">
     @include('include.teachermenu')
 @section('content')
+<style>
+    .card-header {
+        background-color: #B0D9E2;
+    }
+  </style>
     <div class="container">
         <div class="row" style="margin:20px;">
             <div class="col-12">
@@ -38,9 +43,12 @@
 
                                         <td>
                                             <a href="{{ url('/viewbulletinTeacher/' . $item->id) }}" title="View Bulletin">
-                                                <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Lihat</button>
+                                                <button class="btn btn-info btn-sm" style="background-color: #B0D9E2; border-color: #B0D9E2;">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i> Lihat
+                                                </button>
                                             </a>
                                         </td>
+                                        
                                     </tr>
                                 @endforeach
                                 </tbody>
