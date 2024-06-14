@@ -31,21 +31,21 @@ Route::delete('/DeleteTimetable/{id}', [TimetableController::class, 'destroy'])-
 
 
 //login
-/*Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'loginPost'])->name('login.post');
 Route::get('/registration',[UserController::class, 'registration'])->name('registration');
 Route::post('/registration', [UserController::class, 'registrationPost'])->name('registration.post');
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
-Route::get('/home', [UserController::class, 'KAHome'])->name('KAHome');*/
+Route::get('/home', [UserController::class, 'KAHome'])->name('KAHome');
 
 // Login routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Registration routes
+/*Registration routes
 Route::get('/registration', [RegistrationController::class, 'showRegistrationForm'])->name('registration');
-Route::post('/registration', [RegistrationController::class, 'register'])->name('registration.post');
+Route::post('/registration', [RegistrationController::class, 'register'])->name('registration.post');*/
 
 
 //report
