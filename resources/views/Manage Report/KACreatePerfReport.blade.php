@@ -5,7 +5,7 @@
 @include('include.KAmenu')
     <div class="container" class="flex-grow-1 p-3">
         <div style="text-align:left"><br>
-            <h2 style="color:#2d532d">Borang Laporan Aktiviti</h2><br>
+            <h2 style="color:#2d532d">Borang Laporan Pencapaian</h2><br>
         </div>
         <form>
             <table class="table table-borderless">
@@ -54,7 +54,7 @@
                             <td>{{ $row->Paper_Name }}</td>
                             <td>{{ $row->id }}</td>
                             <td style="width:80px">
-                                <input type="text" class="form-control" name="total_A_"{{ $row->id }}>
+                                <input type="text" class="form-control" name="total_A">
                             </td>
                             <td style="width:80px">
                                 <input type="text" class="form-control" name="total_B">
@@ -85,10 +85,8 @@
             </table><br>
 
             <div style="text-align:center">
-                <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
+                <button type="button" class="btn btn-primary" onclick="document.location='/KAReport'" 
                 style="background-color:#2d532d" style=width:300px>Kembali</button>
-                <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
-                style="background-color:#2d532d" style=width:300px>Simpan</button>
                 <button type="submit" class="btn btn-primary" style="background-color:#2d532d">Hantar</button>
             </div>
         </form>

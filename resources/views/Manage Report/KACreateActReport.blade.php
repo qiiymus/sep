@@ -71,7 +71,7 @@
             <div style="text-align:center">
                 <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
                 style="background-color:#2d532d" style=width:300px>Kembali</button>
-                <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
+                <button type="submit" class="btn btn-primary" onclick="document.location='KAReport'" 
                 style="background-color:#2d532d" style=width:300px>Simpan</button>
                 <button type="submit" class="btn btn-primary" style="background-color:#2d532d">Hantar</button>
             </div>

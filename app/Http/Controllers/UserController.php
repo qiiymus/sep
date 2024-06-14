@@ -22,7 +22,7 @@ class UserController extends Controller
     }
 
 
-    function loginPost(Request $request){
+    /*function loginPost(Request $request){
         $request->validate([
             'user_id'=>'required',
             'password'=>'required',
@@ -37,7 +37,34 @@ class UserController extends Controller
             }
         }
         return redirect(route('LoginPage'))->with("error","Login details are invalid");
-    }
+    }*/
+
+    function loginPost(Request $request){
+        $request->validate([
+            'id'=>'required',
+            'password'=>'required',
+            'role'=>'required|in:parent,teacher,KAFA admin,MUIP admin', // Validate role
+        ]);
+
+        $credentials = $request->only('id', 'password');
+        $role = $request->role;
+
+        if(Auth::attempt($credentials)){
+            $user = Auth::user();
+
+            // Check user role and redirect accordingly
+            if($role === 'parent' && $user->UserType === 'parent') {
+                return redirect()->intended(route('Manage KAFA Timetable.ParentsViewTimetable'))->with("success", "Login successful");
+            } elseif($role === 'teacher' && $user->UserType === 'teacher') {
+                return redirect()->intended(route('Manage KAFA Timetable.TeacherViewTimetable'))->with("success", "Login successful");
+            } elseif($role === 'KAFA admin' && $user->UserType === 'KAFA admin') {
+                return redirect()->intended(route('Manage KAFA Timetable.AdminManageTimetable'))->with("success", "Login successful");
+            } /*elseif($role === 'MUIP admin' && $user->UserType === 'MUIP admin') {
+                return redirect()->intended(route('muipadmin.dashboard'))->with("success", "Login successful");*/
+            } else {
+                return redirect(route('login'))->with("error", "Invalid role selected or unauthorized access.");
+            }
+        }
 
     function registrationPost(Request $request){
         $request->validate([
@@ -48,6 +75,11 @@ class UserController extends Controller
             'std_age'=>'required',
             'std_address'=>'required',
             'std_class'=>'required',
+            'p_name' =>'required',
+            'mykad' =>'required',
+            'phonenum' =>'required',
+            'email' =>'required',
+            'relationship' =>'required'
         ]);
 
         $data['Name']=$request->std_name;
@@ -65,7 +97,7 @@ class UserController extends Controller
         return redirect(route('login'))->with("success","Registration successful.");
     }
 
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
         $request->validate(
             [
@@ -95,6 +127,8 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
+        return redirect(route('login'))->with("error", "Invalid credentials.");
+    }*/
     /**
      * Display the specified resource.
      */
@@ -110,8 +144,8 @@ class UserController extends Controller
     }
  
     /**
-     * Update the specified resource in storage.
-     */
+     * Update the specified resource in storage.*/
+     
     public function update(Request $request, $id)
     {
         $request->validate(
@@ -146,8 +180,8 @@ class UserController extends Controller
     }
  
     /**
-     * Remove the specified resource from storage.
-     */
+     * Remove the specified resource from storage.*/
+     
     public function destroy(Request $request)
     {
         $userData = User::findOrFail($request->user_id);

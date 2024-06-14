@@ -61,7 +61,7 @@
           </a>
         </li>
         <li>
-          <a href="KAReport" class="nav-link py-3 border-bottom" title="Report" data-bs-toggle="tooltip" data-bs-placement="right">
+          <a href="MAReport" class="nav-link py-3 border-bottom" title="Report" data-bs-toggle="tooltip" data-bs-placement="right">
             <img src="{{ asset('img/report (p).png') }}" width="24" height="24" alt="Report">
           </a>
         </li>
