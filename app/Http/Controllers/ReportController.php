@@ -19,11 +19,13 @@ class ReportController extends Controller
     }
 
     function KAEditAR(){
-        return view('Manage Report.KAEditActReport');
+        $report = ReportModel::all();
+        return view('Manage Report.KAEditActReport', ['report' => $report]);
     }
 
     function KAViewAR(){
-        return view('Manage Report.KAViewActReport');
+        $report = ReportModel::all();
+        return view('Manage Report.KAViewActReport', ['report' => $report]);
     }
 
     function KACreatePR(Request $request){
@@ -32,6 +34,7 @@ class ReportController extends Controller
     }
 
     function KAEditPR(){
+        $report = ReportModel::all();
         return view('Manage Report.KAEditPerfReport');
     }
 
@@ -95,9 +98,16 @@ class ReportController extends Controller
             'summary' => 'required',
         ]);
 
-        $data = new ReportModel;
-        $data->session = $validated['session'];
-        $data->exam = $validated['exam'];
+        $data['Session']=$request->session;
+        $data['Exam']=$request->exam;
+        $data['Total_F_1']= $request->total_A_1;
+        $data['StartTime']=$request->total_B_1;
+        $data['EndTime']=$request->total_C_1;
+        $data['Teacher_ID']= $request->total_D_1;
+        $data['Location']=$request->total_E_1;
+        $data['Description']=$request->total_F_1;
+        $data->session = $validated['Session'];
+        $data->exam = $validated['Exam'];
         $data->total_A_1 = $validated['total_A_1'];
         $data->total_B_1 = $validated['total_B_1'];
         $data->total_C_1 = $validated['total_C_1'];
@@ -135,9 +145,12 @@ class ReportController extends Controller
         $data->total_E_6 = $validated['total_E_6'];
         $data->total_F_6 = $validated['total_F_6'];
         $data->summary = $validated['summary'];
-        $data->save();
+        $report=ReportModel::create($data);
 
-        return redirect(route('KAReport'))->with("success","Report created successfully.");
+        if (!$report){
+            return redirect(route('KAReport'))->with("error","Report creation failed.");
+        }
+        return redirect(route('KAReport'))->with("success","Report creation successful.");   
     }
 
     function KACreateARPost(Request $request){
@@ -161,13 +174,13 @@ class ReportController extends Controller
         $data['Teacher_ID']= $request->act_teacher;
         $data['Location']=$request->act_place;
         $data['Description']=$request->act_details;
-        $user=ReportModel::create($data);
+        $report=ReportModel::create($data);
 
-        if (!$user){
-            return redirect(route('register'))->with("error","Registration failed.");
+        if (!$report){
+            return redirect(route('KAReport'))->with("error","Report creation failed.");
         }
-        return redirect(route('login'))->with("success","Registration successful.");
-    }
+        return redirect(route('KAReport'))->with("success","Report creation successful.");
+      }
 
     public function store(Request $request)
     {
@@ -212,9 +225,8 @@ class ReportController extends Controller
      */
     public function edit($id)
     {
-        $title = "Update User";
-        $edit = User::findOrFail($id);
-        return view('admin.add_edit_user', compact('edit', 'title'));
+        $report = ReportModel::findOrFail($id);
+        return view('KAEditAR', compact('report'));
     }
  
     /**
@@ -222,36 +234,31 @@ class ReportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate(
-            [
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email,' . $id,
-                'photo' => 'mimes:png,jpeg,jpg|max:2048',
-            ]
-        );
-        $update = User::findOrFail($id);
-        $update->name = $request->name;
-        $update->email = $request->email;
- 
-        if ($request->hasfile('photo')) {
-            $filePath = public_path('uploads');
-            $file = $request->file('photo');
-            $file_name = time() . $file->getClientOriginalName();
-            $file->move($filePath, $file_name);
-            // delete old photo
-            if (!is_null($update->photo)) {
-                $oldImage = public_path('uploads/' . $update->photo);
-                if (File::exists($oldImage)) {
-                    unlink($oldImage);
-                }
-            }
-            $update->photo = $file_name;
-        }
- 
-        $result = $update->save();
-        Session::flash('success', 'User updated successfully');
-        return redirect()->route('user.index');
+        $request->validate([
+            'act_name' => 'required|string|max:255',
+            'act_type' => 'required|string',
+            'act_date' => 'required|date',
+            'act_startTime' => 'required|date_format:H:i',
+            'act_endTime' => 'required|date_format:H:i',
+            'act_teacher' => 'required|string',
+            'act_place' => 'required|string|max:255',
+            'act_details' => 'required|string',
+        ]);
+
+        $report = ReportModel::findOrFail($id);
+        $report->Name = $request->input('act_name');
+        $report->Type = $request->input('act_type');
+        $report->Activity_Date = $request->input('act_date');
+        $report->StartTime = $request->input('act_startTime');
+        $report->EndTime = $request->input('act_endTime');
+        $report->Teacher_ID = $request->input('act_teacher');
+        $report->Location = $request->input('act_place');
+        $report->Description = $request->input('act_details');
+        $report->save();
+
+        return redirect()->route('KAReport')->with('success', 'Report updated successfully');
     }
+
  
     /**
      * Remove the specified resource from storage.

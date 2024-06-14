@@ -57,9 +57,22 @@
                     <td>{{ $row->Name }}</td>
                     <td>LA00{{ $row->AR_ID }}/2024</td>
                     <td>{{ $row->Report_Date }}</td>
-                    <td>{{ $row->reportType->Type }}</td>
-                    <td>{{ $row->reportStatus->status }}</td>
-                    <td></td>
+                    <td>{{ $row->Type }}</td>
+                    <td>{{ $row->status }}</td>
+                    <td>
+                    <a href={{ route('KAViewAR', ['id' => $row->AR_ID]) }} class="text-decoration-none" title="Papar"> 
+                        <img src="img\eye.png" alt="Papar" style="width:20px;height:20px;">
+                    </a>
+                    <a href={{ route('KAEditAR.edit', ['id' => $row->AR_ID]) }} class="text-decoration-none" title="Kemaskini">
+                        <img src="img\pen.png" alt="Kemaskini" style="width:20px;height:20px;">
+                    </a>
+                    <button class="btn" onClick="deleteFunction('{{ $row->id }}')" title="Padam">
+                        <img src="img\trash-bin.png" alt="Padam" style="width:15px;height:15px;">
+                    </button>
+                    <button class="btn" onClick="deleteFunction('{{ $row->id }}')" title="Muat Turun">
+                        <img src="img\direct-download.png" alt="Muat Turun" style="width:20px;height:20px;">
+                    </button>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
@@ -67,3 +80,13 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+<script>
+    function deleteFunction(id) {
+        document.getElementById('delete_id').value = id;
+        $("#modalDelete").modal('show');
+    }
+</script>
+@endpush
+
