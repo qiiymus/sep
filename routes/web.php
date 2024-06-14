@@ -23,6 +23,9 @@ Route::get('/ShowTimetable/{id}', [TimetableController::class, 'show'])->name('t
 Route::get('/EditTimetable/{id}', [TimetableController::class, 'edit'])->name('timetable.edit');
 Route::patch('/UpdateTimetable/{id}', [TimetableController::class, 'update'])->name('timetable.update');
 Route::delete('/DeleteTimetable/{id}', [TimetableController::class, 'destroy'])->name('timetable.destroy');
+//Route::get('/ShowTimetableParent/{id}', [TimetableController::class, 'pshow'])->name('timetable.pshow');
+//Route::get('/ShowTimetableTeacher/{id}', [TimetableController::class, 'tshow'])->name('timetable.tshow');
+
 
 //result
 Route::get('/ka-choose-class', [ResultController::class, 'showKAChooseClassPage'])->name('ka.choose.class');

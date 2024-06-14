@@ -44,6 +44,7 @@ class TimetableController extends Controller
         return view('Manage KAFA Timetable.AdminAddTimetable');
     }
 
+    //store new data into database
     public function store(Request $request)
     {
         $request->validate([
@@ -65,18 +66,34 @@ class TimetableController extends Controller
         return redirect()->route('KAManageTT')->with('success', 'Timetable created successfully.');
     }
 
+    //show specific data
     public function show($id)
     {
         $timetable = TimetableModel::findOrFail($id);
         return view('Manage KAFA Timetable.AdminTimetablePage', compact('timetable'));
     }
 
+    public function pshow($id)
+    {
+        $timetable = TimetableModel::findOrFail($id);
+        return view('Manage KAFA Timetable.ParentsTimetablePage', compact('timetable'));
+    }
+
+    /*public function tshow($id)
+    {
+        $timetable = TimetableModel::findOrFail($id); // Ensure $id exists in the database
+        dd($timetable);
+        return view('Manage KAFA Timetable.TeacherTimetablePage', compact('timetable'));
+    }*/
+
+    //edit data
     public function edit($id)
     {
         $timetable = TimetableModel::findOrFail($id);
         return view('Manage KAFA Timetable.AdminEditTimetable', compact('timetable'));
     }
 
+    //update data
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -99,6 +116,7 @@ class TimetableController extends Controller
         return redirect()->route('KAManageTT')->with('success', 'Timetable updated successfully.');
     }
 
+    //delete data
     public function destroy($id)
     {
         $timetable = TimetableModel::findOrFail($id);
