@@ -48,17 +48,15 @@
                                                 </button>
                                             </a>
                                         </td>
-                                        
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
                 <br/>
-                        <br/>
+                <br/>
             </div>
             
         </div>
