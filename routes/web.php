@@ -6,6 +6,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\ResultController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +28,7 @@ Route::delete('/DeleteTimetable/{id}', [TimetableController::class, 'destroy'])-
 //Route::get('/ShowTimetableTeacher/{id}', [TimetableController::class, 'tshow'])->name('timetable.tshow');
 
 
+<<<<<<< Updated upstream
 //result
 Route::get('/ka-choose-class', [ResultController::class, 'showKAChooseClassPage'])->name('ka.choose.class');
 
@@ -38,6 +40,18 @@ Route::post('/registration', [UserController::class, 'registrationPost'])->name(
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
 Route::get('/home', [UserController::class, 'KAHome'])->name('KAHome');
 
+=======
+Route::get('/ManageKAFATimetable', [TimetableController::class], 'ParentViewTT');
+Route::get('/ManageKAFATimetable', [TimetableController::class], 'TeacherViewTT');
+Route::get('/ManageKAFATimetable', [TimetableController::class], 'KAViewTT');
+
+
+Route::get('/login', [AuthManager::class, 'login'])->name('login');
+Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
+Route::get('/registration',[AuthManager::class, 'registration'])->name('registration');
+Route::post('/registration', [AuthManager::class, 'registrationPost'])->name('registration.post');
+Route::get('/logout',[AuthManager::class,'logout'])->name('logout');
+>>>>>>> Stashed changes
 
 //report
 Route::get('/KAReport',[ReportController::class,'KAReport'])->name('KAReport');
@@ -70,12 +84,18 @@ Route::get('/viewbulletinParents/{id}', [BulletinController::class, 'showparents
 // <--TEACHER BULLETIN-->
 Route::get('/bulletinTeachers', [BulletinController::class, 'indexteacher']);
 Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher'])->name('bulletin.viewteacher');
-
-
-
-// Routes for ResultController
-Route::get('/ManageStudentResults', [AuthManager::class, 'ChooseClass'])->name('ManageStudentResults.ChooseClass');
-Route::get('/ManageStudentResults/KAStudentList', [AuthManager::class, 'index'])->name('ManageStudentResults.index');
-Route::get('/ManageStudentResults/{id}/KAResultPage', [AuthManager::class, 'show'])->name('ManageStudentResults.show');
-
 Route::resource('/bulletin', BulletinController::class);
+
+
+// Routes for Result
+Route::get('/ManageStudentResults', [ResultController::class, 'chooseClass'])->name('ManageStudentResults.ChooseClass');
+Route::get('/ManageStudentResults/{id}/KAResultPage', [ResultController::class, 'show'])->name('ManageStudentResults.show');
+Route::get('/ManageStudentResults/KAAddResult', [ResultController::class, 'create'])->name('ManageStudentResults.create');
+Route::post('/ManageStudentResults/KAResultPage', [ResultController::class, 'store'])->name('ManageStudentResults.store');
+Route::get('/ManageStudentResults/{id}/edit', [ResultController::class, 'edit'])->name('ManageStudentResults.edit');
+Route::patch('/ManageStudentResults/{id}', [ResultController::class, 'update'])->name('ManageStudentResults.update');
+Route::delete('/ManageStudentResults/{id}', [ResultController::class, 'destroy'])->name('ManageStudentResults.destroy');
+Route::get('/KAResultPage', [ResultController::class, 'index'])->name('kareresults.index');
+Route::get('/choose-class', [ResultController::class, 'chooseClass'])->name('choose.class');
+Route::get('/students-list', [ResultController::class, 'listStudents'])->name('students.list');
+
