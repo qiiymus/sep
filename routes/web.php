@@ -6,7 +6,6 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\BulletinController;
-use App\Http\Controllers\ResultController;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 Route::get('/', function () {
