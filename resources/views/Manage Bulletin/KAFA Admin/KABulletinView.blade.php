@@ -4,8 +4,12 @@
 <div class="d-flex">
 @include('include.KAmenu')
 @section('content')
-
-<div class="card" style="margin:20px;">
+<style>
+  .card-header {
+      background-color: #9FB996;
+  }
+</style>
+<div class="card" style="margin:20px;" >
 
   <div class="card-header">
     <h1>KAFA Bulletin</h1>

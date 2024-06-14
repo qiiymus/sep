@@ -34,8 +34,8 @@ class ReportController extends Controller
     }
 
     function KAEditPR(){
-        $report = ReportModel::all();
-        return view('Manage Report.KAEditPerfReport');
+        $paper = ReportModel::all();
+        return view('Manage Report.KAEditPerfReport', ['paper' => $paper]);
     }
 
     function KAViewPR(){
@@ -43,7 +43,8 @@ class ReportController extends Controller
     }
 
     function MAReport(){
-        return view('Manage Report.MAReportList');
+        $report = ReportModel::all();
+        return view('Manage Report.MAReportList', ['report' => $report]);
     }
 
     function MAViewAR(){
@@ -153,6 +154,7 @@ class ReportController extends Controller
         return redirect(route('KAReport'))->with("success","Report creation successful.");   
     }
 
+    //save data
     function KACreateARPost(Request $request){
         $request->validate([
             'act_name'=>'required',
@@ -180,45 +182,22 @@ class ReportController extends Controller
             return redirect(route('KAReport'))->with("error","Report creation failed.");
         }
         return redirect(route('KAReport'))->with("success","Report creation successful.");
-      }
-
-    public function store(Request $request)
-    {
-        $request->validate(
-            [
-                'name' => 'required',
-                'email' => 'required|email|unique:users',
-                'photo' => 'mimes:png,jpeg,jpg|max:2048',
-            ]
-        );
- 
-        $filePath = public_path('uploads');
-        $insert = new User();
-        $insert->name = $request->name;
-        $insert->email = $request->email;
-        $insert->password = bcrypt('password');
- 
- 
-        if ($request->hasfile('photo')) {
-            $file = $request->file('photo');
-            $file_name = time() . $file->getClientOriginalName();
- 
-            $file->move($filePath, $file_name);
-            $insert->photo = $file_name;
-        }
- 
-        $result = $insert->save();
-        Session::flash('success', 'User registered successfully');
-        return redirect()->route('user.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    
+    //show specific data
+    public function kashow($id)
     {
-        //
+        $report = ReportModel::findOrFail($id);
+        return view('Manage Report.KAViewActReport', compact('report'));
     }
+
+    public function mashow($id)
+    {
+        $report = ReportModel::findOrFail($id);
+        return view('Manage Report.MAViewActReport', compact('report'));
+    }
+
  
     /**
      * Show the form for editing the specified resource.
@@ -226,7 +205,7 @@ class ReportController extends Controller
     public function edit($id)
     {
         $report = ReportModel::findOrFail($id);
-        return view('KAEditAR', compact('report'));
+        return view('Manage Report.KAEditActReport', compact('report'));
     }
  
     /**
@@ -260,23 +239,17 @@ class ReportController extends Controller
     }
 
  
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $userData = User::findOrFail($request->user_id);
-        $userData->delete();
-        // delete photo if exists
-        if (!is_null($userData->photo)) {
-            $photo = public_path('uploads/' . $userData->photo);
-            if (File::exists($photo)) {
-                unlink($photo);
-            }
-        }
-        Session::flash('success', 'User deleted successfully');
-        return redirect()->route('user.index');
+        ReportModel::destroy($id);
+        return redirect('KAReport')->with('flash_message', 'Report deleted!');  
     }
+
+    /*public function download($id)
+    {
+        ReportModel::download($id);
+        return redirect('KAReport')->with('flash_message', 'Report downloaded!');  
+    }*/
 
 
     function logout(){

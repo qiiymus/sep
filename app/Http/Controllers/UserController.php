@@ -136,7 +136,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    /*public function edit($id)
+    public function edit($id)
     {
         $title = "Update User";
         $edit = UserModel::findOrFail($id);
@@ -144,7 +144,7 @@ class UserController extends Controller
     }
  
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage.*/
      
     public function update(Request $request, $id)
     {
@@ -180,7 +180,7 @@ class UserController extends Controller
     }
  
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage.*/
      
     public function destroy(Request $request)
     {
@@ -196,34 +196,6 @@ class UserController extends Controller
         Session::flash('success', 'User deleted successfully');
         return redirect()->route('user.index');
     }
-
-    public function ChooseClass()
-        {
-            // Fetch unique class names from the database
-            $classes = UserModel::select('class')->distinct()->get()->pluck('class');
-            
-            // Pass the classes to the view
-            return view('ManageStudentResults.KAChooseClassPage', compact('classes'));
-        }
-    
-        public function index(Request $request)
-        {
-            $class = $request->input('class');
-    
-            // Fetch students from the selected class
-            $students = UserModel::where('class', $class)->get();
-    
-            // Pass the students and the class name to the view
-            return view('ManageStudentResults.KAStudentList', compact('students', 'class'));
-        }
-    
-        public function show($id)
-        {
-            // Fetch student details
-            $student = UserModel::findOrFail($id);
-    
-            return view('ManageStudentResults.KAResultPage', compact('student'));
-        }*/
 
 
     function logout(){

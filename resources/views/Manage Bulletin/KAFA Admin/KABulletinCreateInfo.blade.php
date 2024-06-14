@@ -5,7 +5,11 @@
 <div class="d-flex">
 @include('include.KAmenu')
 @section('content')
-  
+<style>
+  .card-header {
+      background-color: #9FB996;
+  }
+</style>
 <div class="card" style="margin:20px;">
   <div class="card-header">Create New Bulletins</div>
   <div class="card-body">

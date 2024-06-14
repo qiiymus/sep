@@ -76,4 +76,5 @@ class UserModel extends Model
             'password' => 'hashed',
         ];
     }
-}*/
+    
+}

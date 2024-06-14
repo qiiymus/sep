@@ -13,8 +13,8 @@
     </div>
     <div class="card-body">
         <p>Sila pilih kelas pelajar</p>
-        <form action="{{ route('ManageStudentResults.index') }}" method="GET">
-            <select name="class">
+        <form action="{{ route('students.list') }}" method="GET">
+            <select name="class" required>
                 <option value="">-Sila pilih-</option>
                 @foreach($classes as $class)
                     <option value="{{ $class }}">{{ $class }}</option>
@@ -28,5 +28,3 @@
     </div>
 </div>
 @endsection
-
-

@@ -7,7 +7,9 @@
         <div style="text-align:left"><br>
             <h2 style="color:#2d532d">Kemaskini Laporan Aktiviti</h2><br>
         </div>
-        <form method="POST" action="{{ route('KAEditAR.post', $report->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('report.update', $report->id) }}" enctype="multipart/form-data">
+        @csrf
+        @method('PATCH')
             <table class="table table-borderless">
                 <tr>
                     <td scope="col">Nama Aktiviti:</td>
@@ -20,8 +22,8 @@
                     <td scope="col">Jenis Aktiviti:</td>
                     <td scope="col" colspan="5">
                     <select id="act_type" name="act_type" class="form-control"
-                    value="@if (isset($edit->id)) {{ $edit->Type }}@else {{ old('Type') }} @endif">
-                        <option selected>Pilih jenis aktiviti</option>
+                    value="{{ $report->Type }}">
+                        <option selected>{{ $report->Type }}</option>
                         <option value="Program">Program</option>
                         <option value="Pertandingan">Pertandingan</option>
                     </select>
@@ -31,25 +33,25 @@
                     <td scope="col">Tarikh:</td>
                     <td scope="col">
                         <input type="date" class="form-control" name="act_date" 
-                        value="@if (isset($edit->id)) {{ $edit->Activity_Date }}@else {{ old('Activity_Date') }} @endif">
+                        value="{{ $report->Activity_Date }}">
                     </td>
                     <td scope="col">Masa:</td>
                     <td scope="col">
                         <input type="time" class="form-control" name="act_startTime" 
-                        value="@if (isset($edit->id)) {{ $edit->StartTime }}@else {{ old('StartTime') }} @endif">
+                        value="{{ $report->StartTime }}">
                     </td>
                     <td scope="col">-</td>
                     <td scope="col">
                         <input type="time" class="form-control" name="act_endTime" 
-                        value="@if (isset($edit->id)) {{ $edit->EndTime }}@else {{ old('EndTime') }} @endif">
+                        value="{{ $report->EndTime }}">
                     </td>
                 </tr>
                 <tr>
                     <td scope="col">Guru Bertugas:</td>
                     <td scope="col" colspan="5">
                     <select id="act_teacher" name="act_teacher" class="form-control" 
-                    value="@if (isset($edit->id)) {{ $edit->Teacher_ID }}@else {{ old('Teacher_ID') }} @endif">
-                        <option selected>Pilih ID guru bertugas</option>
+                    value="{{ $report->Teacher_ID }}">
+                        <option selected>{{ $report->Teacher_ID }}</option>
                         <option value="T001">T001</option>
                         <option value="T002">T002</option>
                         <option value="T003">T003</option>
@@ -64,23 +66,27 @@
                     <td scope="col">Tempat:</td>
                     <td scope="col" colspan="5">
                         <input type="text" class="form-control" name="act_place" 
-                        value="@if (isset($edit->id)) {{ $edit->Location }}@else {{ old('Location') }} @endif">
+                        value="{{ $report->Location }}">
                     </td>
                 </tr>
                 <tr>
                     <td scope="col">Ringkasan Aktiviti:</td>
                     <td scope="col" colspan="5">
                         <textarea class="form-control" name="act_details"
-                        value="@if (isset($edit->id)) {{ $edit->Description }}@else {{ old('Description') }} @endif"></textarea>
+                        value="{{ $report->Description }}">{{ $report->Description }}</textarea>
                     </td>
                 </tr>
             </table>
             <div style="text-align:center">
                 <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
                 style="background-color:#2d532d" style=width:300px>Kembali</button>
-                <button type="button" class="btn btn-primary" onclick="document.location='KAReport'" 
-                style="background-color:#2d532d" style=width:300px>Simpan</button>
-                <button type="submit" class="btn btn-primary" style="background-color:#2d532d">Hantar</button>
+                <form action="{{ route('report.update', $report->id) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit" style="background-color:#2d532d" style=width:300px type="button" class="btn btn-primary"> 
+                        Kemaskini
+                    </button>
+                </form>
             </div>
         </form>
     </div>
