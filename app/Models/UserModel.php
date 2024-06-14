@@ -20,6 +20,9 @@ class UserModel extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'User_ID',
+        'Password',
+        'UserType',
         'Image',
         'Name',
         'Mykid_Num',
