@@ -65,8 +65,8 @@
 
 <body>
 <div class="content-wrapper d-flex">
-    @include('include.KAmenu')
     <div class="main flex-grow-1">
+    @include('include.KAmenu')
         <h1>Jadual Waktu Kelas</h1>
         <div class="kelas-ustazah-container">
             <h5><b>Kelas: {{ $timetable->kelas }}</b></h5>

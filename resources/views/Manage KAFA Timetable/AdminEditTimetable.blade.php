@@ -78,8 +78,8 @@
 </head>
 <body>
 <div class="content-wrapper d-flex">
-    @include('include.KAmenu')
     <div class="main flex-grow-1">
+    @include('include.KAmenu')
         <h1>Jadual Waktu Kelas</h1>
         <form action="{{ route('timetable.update', $timetable->id) }}" method="POST">
             @csrf
