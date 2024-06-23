@@ -32,9 +32,7 @@
 
 <div class="card">
     <div class="card-body">
-        <a href="{{ route('ManageStudentResults.create') }}" class="btn btn-success btn-sm" title="Add New Result">
-            <i class="fa fa-plus" aria-hidden="true"></i> Tambah Keputusan
-        </a>
+        
         <br/>
         <br/>
         <div class="table-responsive">

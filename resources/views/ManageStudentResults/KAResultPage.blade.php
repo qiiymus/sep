@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<
+
                 @include('include.KAmenu')
            
 <style>
@@ -60,14 +60,14 @@
                         <td>{{ $item->grade }}</td>
                         <td>
                         <a href="{{ route('ManageStudentResults.edit', $item->id) }}" title="Edit Result" class="btn btn-primary btn-sm">
-    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Kemaskini
 </a>
                         
                         <form method="POST" action="{{ url('/ManageStudentResults/' . $item->id) }}" style="display:inline">
                          @csrf
                           @method('DELETE')
                              <button type="submit" class="btn btn-danger btn-sm" title="Delete Result" onclick="return confirm('Confirm delete?')">
-                              <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                              <i class="fa fa-trash-o" aria-hidden="true"></i> Padam
                              </button>
                         </form>
 

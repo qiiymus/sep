@@ -54,6 +54,8 @@ class ResultController extends Controller
         {
             $results = ResultModel::all();
             return view('ManageStudentResults.KAResultPage', compact('results'));
+            return view('ManageStudentResults.TeacherResultPage', compact('results'));
+            return view('ManageStudentResults.ParentResultPage', compact('results'));
         }
         
     

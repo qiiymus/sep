@@ -109,6 +109,6 @@ Route::get('/choose-class', [ResultController::class, 'chooseClass'])->name('cho
 Route::get('/students-list', [ResultController::class, 'listStudents'])->name('students.list');
 
 Route::get('/ManageStudentResults/{id}/TeacherResultPage', [ResultController::class, 'show'])->name('ManageStudentResults.show');
-Route::get('/ManageStudentResults/TeacherAddResult', [ResultController::class, 'create'])->name('ManageStudentResults.create');
-Route::post('/ManageStudentResults/TeacherResultPage', [ResultController::class, 'store'])->name('ManageStudentResults.store');
-Route::get('/TeacherResultPage', [ResultController::class, 'index'])->name('kareresults.index');
+
+Route::get('/TeacherResultPage', [ResultController::class, 'index'])->name('teachresults.index');
+Route::get('/ParentResultPage', [ResultController::class, 'index'])->name('parresults.index');
