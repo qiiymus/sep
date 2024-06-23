@@ -89,10 +89,10 @@ Route::get('/bulletin/{id}/edit', [BulletinController::class, 'edit'])->name('bu
 Route::patch('/bulletin/{id}', [BulletinController::class, 'update'])->name('bulletin.update');
 Route::delete('/bulletin/{id}', [BulletinController::class, 'destroy'])->name('bulletin.destroy');
 // <--PARENTS BULLETIN-->
-Route::get('/bulletinParents',[BulletinController::class, 'indexparents']);
+Route::get('/bulletinParents', [BulletinController::class, 'indexparents'])->name('indexparents');
 Route::get('/viewbulletinParents/{id}', [BulletinController::class, 'showparents'])->name('viewbulletinParents');
 // <--TEACHER BULLETIN-->
-Route::get('/bulletinTeachers', [BulletinController::class, 'indexteacher']);
+Route::get('/bulletinTeachers', [BulletinController::class, 'indexteacher'])->name('indexteacher');
 Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher'])->name('bulletin.viewteacher');
 Route::resource('/bulletin', BulletinController::class);
 
