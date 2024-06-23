@@ -28,9 +28,11 @@
     background-color: #f8f9fa;
 }
 .card {
-    margin: 2rem;
+    margin: 4rem;
 }
 </style>
+
+@include('include.teachermenu')
 
 <div class="card">
     <div class="card-header">
@@ -50,46 +52,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2 Fatanah</td>
-                        <td>Upin bin Ipin</td>
-                        <td>
-                        <a href="{{ route('kareresults.index') }}" title="View Student">
-                                <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Papar</button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2 Fatanah</td>
-                        <td>Siti binti Ali</td>
-                        <td>
-                        <a href="{{ route('kareresults.index') }}" title="View Student">
-                                <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Papar</button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2 Fatanah</td>
-                        <td>Farhanah binti Mohd</td>
-                        <td>
-                        <a href="{{ route('kareresults.index') }}" title="View Student">
-                                <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Papar</button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>2 Fatanah</td>
-                        <td>Ehsan bin Mail</td>
-                        <td>
-                        <a href="{{ route('kareresults.index') }}" title="View Student">
-                                <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Papar</button>
-                            </a>
-                        </td>
-                    </tr>
+                    @foreach($students as $index => $student)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $class }}</td>
+                            <td>{{ $student['name'] }}</td>
+                            <td>
+                                <a href="{{ route('kareresults.index') }}" title="View Student">
+                                    <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Papar</button>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
