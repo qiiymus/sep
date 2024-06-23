@@ -28,10 +28,12 @@
     background-color: #f8f9fa;
 }
 .card {
-    margin: 2rem;
+    margin: 4rem;
 }
 </style>
 
+                @include('include.KAmenu')
+          
 <div class="card">
     <div class="card-header">
         <h2>Senarai nama pelajar kelas {{ $class }}</h2>

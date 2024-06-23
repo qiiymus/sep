@@ -55,21 +55,29 @@
             @foreach($report as $index => $row)
                 <tr>
                     <td>{{ $row->Name }}</td>
-                    <td>LA00{{ $row->AR_ID }}/2024</td>
+                    <td>LA00{{ $row->id }}/2024</td>
                     <td>{{ $row->Report_Date }}</td>
                     <td>{{ $row->Type }}</td>
                     <td>{{ $row->status }}</td>
                     <td>
-                    <a href={{ route('KAViewAR', ['id' => $row->AR_ID]) }} class="text-decoration-none" title="Papar"> 
-                        <img src="img\eye.png" alt="Papar" style="width:20px;height:20px;">
-                    </a>
-                    <a href={{ route('KAEditAR.edit', ['id' => $row->AR_ID]) }} class="text-decoration-none" title="Kemaskini">
-                        <img src="img\pen.png" alt="Kemaskini" style="width:20px;height:20px;">
-                    </a>
-                    <button class="btn" onClick="deleteFunction('{{ $row->id }}')" title="Padam">
-                        <img src="img\trash-bin.png" alt="Padam" style="width:15px;height:15px;">
-                    </button>
-                    <button class="btn" onClick="deleteFunction('{{ $row->id }}')" title="Muat Turun">
+                    <form action="{{ route('report.kashow', $row->id) }}" method="GET" style="margin: 0">
+                        <button type="submit" class="btn">
+                            <img src="img\eye.png" alt="Papar" style="width:20px;height:20px;">
+                        </button>
+                    </form>
+                    <form action="{{ route('report.edit', $row->id) }}" method="GET" style="margin: 0">
+                        <button type="submit" class="btn">
+                            <img src="img\pen.png" alt="Kemaskini" style="width:20px;height:20px;">
+                        </button>
+                    </form>
+                    <form action="{{ route('report.destroy', $row->id) }}" method="POST" style="margin: 0;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn">
+                            <img src="img\trash-bin.png" alt="Padam" style="width:15px;height:15px;">
+                        </button>
+                    </form>
+                    <button class="btn" href= "#" title="Muat Turun">
                         <img src="img\direct-download.png" alt="Muat Turun" style="width:20px;height:20px;">
                     </button>
                     </td>
@@ -80,13 +88,3 @@
     </div>
 </div>
 @endsection
-
-@push('js')
-<script>
-    function deleteFunction(id) {
-        document.getElementById('delete_id').value = id;
-        $("#modalDelete").modal('show');
-    }
-</script>
-@endpush
-

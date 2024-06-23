@@ -1,7 +1,9 @@
 @extends('layout')
 
 @section('content')
-
+<div class="col-md-1">
+                @include('include.KAmenu')
+            </div>
 <div class="card">
     <div class="card-header">Kemaskini Keputusan Pelajar</div>
     <div class="card-body">

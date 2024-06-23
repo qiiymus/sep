@@ -1,16 +1,19 @@
 @extends('layout')
 
 @section('content')
+<
+                @include('include.KAmenu')
+           
 <style>
 .page-title {
     font-size: 1.5rem;
-    margin: 20px;
+    margin: 70px;
     font-weight: bold;
 }
 .card {
     display: block;
-    margin: 20px;
-    padding: 20px;
+    margin: 70px;
+    padding: 80px;
     border: 1px solid #dee2e6;
 }
 .card-header, .card-body {

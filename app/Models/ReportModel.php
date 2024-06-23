@@ -32,51 +32,11 @@ class ReportModel extends Model
         'Report_Date',
         'ReportType_ID',
         'ReportStatus_ID',
+        'id',
+        'Paper_Name',
+
     ];
 
-    public function reportType()
-    {
-        return $this->belongsTo(ReportType::class, 'ReportType_ID');
-    }
-
-    public function reportStatus()
-    {
-        return $this->belongsTo(ReportStatus::class, 'ReportStatus_ID');
-    }
-
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    
 }
 
-class ReportType extends Model
-{
-    protected $table = "report_type";
-    protected $fillable = ['Type'];
-}
-
-class ReportStatus extends Model
-{
-    protected $table = "report_status";
-    protected $fillable = ['status'];
-}
