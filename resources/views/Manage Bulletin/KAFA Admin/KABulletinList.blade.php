@@ -67,9 +67,9 @@
                 </div>
                 <br/>
                         <br/>
-                <a href="{{ url('/bulletin/create') }}" class="btn btn-success btn-sm" title="Add New Bulletin">
-                    Add New
-                </a>
+                        <a href="{{ url('/bulletin/create') }}" class="btn btn-sm" title="Add New Bulletin" style="background-color: #9FB996; border-color: #9FB996;">
+                            Tambah Bulletin
+                        </a>                        
             </div>
             
         </div>

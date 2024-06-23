@@ -29,7 +29,7 @@
                                         <th>Tarikh</th>
                                         <th>Kepentingan</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
+                                        <th>Tindakan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
