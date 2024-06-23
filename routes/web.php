@@ -95,6 +95,7 @@ Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher
 Route::resource('/bulletin', BulletinController::class);
 
 
+
 // Routes for Result
 Route::get('/ManageStudentResults', [ResultController::class, 'chooseClass'])->name('ManageStudentResults.ChooseClass');
 Route::get('/ManageStudentResults/{id}/KAResultPage', [ResultController::class, 'show'])->name('ManageStudentResults.show');
@@ -106,3 +107,4 @@ Route::delete('/ManageStudentResults/{id}', [ResultController::class, 'destroy']
 Route::get('/KAResultPage', [ResultController::class, 'index'])->name('kareresults.index');
 Route::get('/choose-class', [ResultController::class, 'chooseClass'])->name('choose.class');
 Route::get('/students-list', [ResultController::class, 'listStudents'])->name('students.list');
+

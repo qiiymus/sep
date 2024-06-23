@@ -17,34 +17,45 @@ class ResultController extends Controller
     
         //
         public function chooseClass(): View
-    {
-        $classes = UserModel::select('class')->distinct()->get()->pluck('class');
-        return view('ManageStudentResults.KAChooseClassPage', compact('classes'));
-    }
-
-    public function listStudents(Request $request): View
-    {
-        $class = $request->get('class');
-        return view('ManageStudentResults.KAStudentList', compact('class'));
-    }
+        {
+            // Static list of classes
+            $classes = ['2 fatanah', '2 amanah'];
+            return view('ManageStudentResults.KAChooseClassPage', compact('classes'));
+        }
     
-
+        // Show the list of students for the selected class
+        public function listStudents(Request $request): View
+        {
+            $class = $request->get('class');
+            $students = $this->getStudentsByClass($class);
+            return view('ManageStudentResults.KAStudentList', compact('class', 'students'));
+        }
     
-
-    public function index(): View
-    {
-        // Retrieve all results
-        $results = ResultModel::all();
-        return view('ManageStudentResults.KAResultPage', compact('results'));
-    }
-
-    public function show($id): View
-    {
-        $student = UserModel::findOrFail($id);
-        $results = ResultModel::where('id', $id)->get(); 
-        return view('ManageStudentResults.KAResultPage', compact('student', 'results'));
+        // Static method to simulate student data retrieval
+        private function getStudentsByClass(string $class)
+        {
+            $students = [
+                '2 fatanah' => [
+                    ['id' => 1, 'name' => 'Upin bin Ipin'],
+                    ['id' => 2, 'name' => 'Siti binti Ali'],
+                    ['id' => 3, 'name' => 'Farhanah binti Mohd'],
+                    ['id' => 4, 'name' => 'Ehsan bin Mail'],
+                ],
+                '2 amanah' => [
+                    ['id' => 5, 'name' => 'Ali bin Abu'],
+                    ['id' => 6, 'name' => 'Aminah binti Karim'],
+                ],
+            ];
+    
+            return $students[$class] ?? [];
+        }
+    
+        public function index(): View
+        {
+            $results = ResultModel::all();
+            return view('ManageStudentResults.KAResultPage', compact('results'));
+        }
         
-    }
     
 
 
