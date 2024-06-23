@@ -136,7 +136,7 @@
         <div class="search-container">
             <p>Kelas:</p>
             <form action="{{ route('timetable.index') }}" method="GET">
-                <input type="text" name="search" placeholder="Cari Kelas">
+                <input type="text" name="findclass" placeholder="Cari Kelas">
                 <button type="submit">Cari</button>
             </form>
         </div>
