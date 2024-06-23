@@ -2,6 +2,7 @@
 @section('title','Kemaskini Jadual Waktu Kelas')
 @section('content')
 <head>
+    <!--CSS for the elements-->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,14 +17,6 @@
         .main h1 {
             color: #18392b;
             font-weight: bold;
-        }
-        .image-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .image-container img {
-            width: 150px;
-            border-radius: 50%;
         }
         .form-inline {
             display: flex;
@@ -76,11 +69,14 @@
         }
     </style>
 </head>
+
+<!--Content starts here-->
 <body>
 <div class="content-wrapper d-flex">
-    <div class="main flex-grow-1">
     @include('include.KAmenu')
-        <h1>Jadual Waktu Kelas</h1>
+    <div class="main flex-grow-1">
+        <h1>Kemaskini Jadual Waktu Kelas</h1>
+        <!--Call the controller to display the specific class's timetable details for the edit form-->
         <form action="{{ route('timetable.update', $timetable->id) }}" method="POST">
             @csrf
             @method('PATCH')
@@ -135,16 +131,11 @@
                 <form action="{{ route('KAViewTT') }}" method="GET">
                     <button type="submit">Batal</button>
                 </form>
-                <form action="{{ route('timetable.update', $timetable->id) }}" method="POST">
-                    @csrf
-                    @method('PATCH')
-                    <button type="submit">Kemaskini</button>
-                </form>
+                <button type="submit">Kemaskini</button>
             </div>
         </form>
     </div>
 </div>
 
 </body>
-</html>
 @endsection

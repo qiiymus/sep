@@ -14,18 +14,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//timetable
+//timetable module
+//view
 Route::get('/ParentViewTT', [TimetableController::class, 'ParentViewTT'])->name('ParentViewTT');
 Route::get('/TeacherViewTT', [TimetableController::class, 'TeacherViewTT'])->name('TeacherViewTT');
 Route::get('/KAViewTT', [TimetableController::class, 'KAViewTT'])->name('KAViewTT');
 Route::get('/KAAddTT', [TimetableController::class, 'KAAddTT'])->name('KAAddTT');
 Route::get('/KAEditTT', [TimetableController::class, 'KAEditTT'])->name('KAEditTT');
 Route::get('/KAManageTT', [TimetableController::class, 'KAManageTT'])->name('KAManageTT');
+
+//operation -edit, delete, display
 Route::resource('timetable', TimetableController::class);
 Route::get('/ShowTimetable/{id}', [TimetableController::class, 'show'])->name('timetable.show');
-Route::get('/EditTimetable/{id}', [TimetableController::class, 'edit'])->name('timetable.edit');
-Route::patch('/UpdateTimetable/{id}', [TimetableController::class, 'update'])->name('timetable.update');
+Route::get('/timetable/{id}/edit', [TimetableController::class, 'edit'])->name('timetable.edit');
+Route::patch('/timetable/{id}', [TimetableController::class, 'update'])->name('timetable.update');
 Route::delete('/DeleteTimetable/{id}', [TimetableController::class, 'destroy'])->name('timetable.destroy');
+Route::get('/SearchedTimetablePage', [TimetableController::class, 'index'])->name('timetable.index');
 //Route::get('/ShowTimetableParent/{id}', [TimetableController::class, 'pshow'])->name('timetable.pshow');
 //Route::get('/ShowTimetableTeacher/{id}', [TimetableController::class, 'tshow'])->name('timetable.tshow');
 

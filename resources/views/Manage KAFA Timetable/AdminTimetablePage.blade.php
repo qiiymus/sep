@@ -1,7 +1,8 @@
 @extends('layout')
-@section('title', 'Kemaskini Jadual Waktu Kelas')
+@section('title', 'Jadual Waktu Kelas')
 @section('content')
 <head>
+    <!--CSS for the elements-->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -63,11 +64,13 @@
     </style>
 </head>
 
+<!--Content starts here-->
 <body>
 <div class="content-wrapper d-flex">
+@include('include.KAmenu')
     <div class="main flex-grow-1">
-    @include('include.KAmenu')
         <h1>Jadual Waktu Kelas</h1>
+        <!--To display the specific class's timetable details-->
         <div class="kelas-ustazah-container">
             <h5><b>Kelas: {{ $timetable->kelas }}</b></h5>
             <h5><b>Ustazah: {{ $timetable->ustazah }}</b></h5>
