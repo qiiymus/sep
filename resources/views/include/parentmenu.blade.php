@@ -63,7 +63,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link py-3 border-bottom" title="Timetable" data-bs-toggle="tooltip" data-bs-placement="right">
+      <a href="{{ route('ParentViewTT') }}" class="nav-link py-3 border-bottom" title="Timetable" data-bs-toggle="tooltip" data-bs-placement="right">
         <img src="{{ asset('img/timetable (y).png') }}" width="24" height="24" alt="Timetable">
       </a>
     </li>
@@ -73,7 +73,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link py-3 border-bottom" title="Bulletin" data-bs-toggle="tooltip" data-bs-placement="right">
+      <a href="{{ route('indexparents') }}" class="nav-link py-3 border-bottom" title="Bulletin" data-bs-toggle="tooltip" data-bs-placement="right">
         <img src="{{ asset('img/bulletin (y).png') }}" width="24" height="24" alt="Bulletin">
       </a>
     </li>

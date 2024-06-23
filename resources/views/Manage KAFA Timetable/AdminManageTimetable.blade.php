@@ -2,6 +2,7 @@
 @section('title', 'Urus Jadual Waktu Kelas')
 @section('content')
 <head>
+    <!--CSS for the elements-->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,18 +21,27 @@
             font-weight: bold;
         }
         .search-container {
-            padding: 10px;
             display: flex;
+            align-items: center;
+            padding: 10px;
             margin-top: 20px;
+            gap: 10px;
+        }
+        .search-container p {
+            margin: 0;
+            font-weight: bold;
+        }
+        .search-container form {
+            display: flex;
             gap: 10px;
         }
         .search-container input[type="text"] {
             width: 300px;
-            height: 20px;
+            height: 40px;
             padding: 10px;
             font-size: 16px;
             border: 1px solid #006400;
-            border-radius: 4px 0 0 4px;
+            border-radius: 4px;
         }
         .search-container button {
             padding: 10px 15px;
@@ -41,7 +51,7 @@
             border-left: none;
             background-color: #4CAF50;
             color: white;
-            border-radius: 10px;
+            border-radius: 4px;
             cursor: pointer;
             align-items: center;
         }
@@ -77,8 +87,7 @@
             vertical-align: middle; /* Center content vertically */
             border: 1px solid;
         }
-        th:first-child,
-        td:first-child {
+        th:first-child, td:first-child {
             width: 60%; /* Set wider width for first column */
             text-align: left; /* Align text left */
         }
@@ -117,20 +126,27 @@
     </style>
 </head>
 
+<!--Content starts here-->
 <body>
 <div class="content-wrapper d-flex">
     @include('include.KAmenu')
     <div class="main flex-grow-1">
         <h1>Jadual Waktu Kelas</h1>
+        <!--Search engine for searching specific class's timetable-->
         <div class="search-container">
-            <p><b>Kelas</b></p>
-            <input type="text">
-            <button type="button">Cari</button>
+            <p>Kelas:</p>
+            <form action="{{ route('timetable.index') }}" method="GET">
+                <input type="text" name="findclass" placeholder="Cari Kelas">
+                <button type="submit">Cari</button>
+            </form>
         </div>
+
+        <!--Create new timetable button, will redirect to add timetable page-->
         <form action="{{ route('KAAddTT') }}">
-            <button type="submit" id="add" >+ Tambah Jadual Waktu Kelas</button>
+            <button type="submit" id="add">+ Tambah Jadual Waktu Kelas</button>
         </form>
 
+        <!--Display list of existing class's timetable-->
         <table>
             <thead>
                 <tr>
@@ -145,12 +161,12 @@
                     <td>
                         <div class="button-container">
                             <form action="{{ route('timetable.show', $timetable->id) }}" method="GET" style="margin: 0">
-                                <button type="submit" class="view">View</button>
+                                <button type="submit" class="view">Lihat</button>
                             </form>
                             <form action="{{ route('timetable.destroy', $timetable->id) }}" method="POST" style="margin: 0;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="delete">Delete</button>
+                                <button type="submit" class="delete">Buang</button>
                             </form>
                         </div>
                     </td>

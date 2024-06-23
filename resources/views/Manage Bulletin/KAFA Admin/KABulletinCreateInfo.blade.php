@@ -30,7 +30,7 @@
         <input type="text" name="status" id="status" class="form-control"></br>
         <label>Isi</label></br>
         <input type="text" name="isi" id="isi" class="form-control"></br>
-        <input type="submit" value="Save" class="btn btn-success"></br>
+        <input type="submit" value="Cipta" class="btn btn-success"></br>
         
     </form>
     

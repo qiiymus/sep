@@ -12,18 +12,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//timetable
+//timetable module
+//view
 Route::get('/ParentViewTT', [TimetableController::class, 'ParentViewTT'])->name('ParentViewTT');
 Route::get('/TeacherViewTT', [TimetableController::class, 'TeacherViewTT'])->name('TeacherViewTT');
 Route::get('/KAViewTT', [TimetableController::class, 'KAViewTT'])->name('KAViewTT');
 Route::get('/KAAddTT', [TimetableController::class, 'KAAddTT'])->name('KAAddTT');
 Route::get('/KAEditTT', [TimetableController::class, 'KAEditTT'])->name('KAEditTT');
 Route::get('/KAManageTT', [TimetableController::class, 'KAManageTT'])->name('KAManageTT');
+
+//operation -edit, delete, display
 Route::resource('timetable', TimetableController::class);
 Route::get('/ShowTimetable/{id}', [TimetableController::class, 'show'])->name('timetable.show');
-Route::get('/EditTimetable/{id}', [TimetableController::class, 'edit'])->name('timetable.edit');
-Route::patch('/UpdateTimetable/{id}', [TimetableController::class, 'update'])->name('timetable.update');
+Route::get('/timetable/{id}/edit', [TimetableController::class, 'edit'])->name('timetable.edit');
+Route::patch('/timetable/{id}', [TimetableController::class, 'update'])->name('timetable.update');
 Route::delete('/DeleteTimetable/{id}', [TimetableController::class, 'destroy'])->name('timetable.destroy');
+Route::get('/SearchedTimetablePage', [TimetableController::class, 'index'])->name('timetable.index');
 //Route::get('/ShowTimetableParent/{id}', [TimetableController::class, 'pshow'])->name('timetable.pshow');
 //Route::get('/ShowTimetableTeacher/{id}', [TimetableController::class, 'tshow'])->name('timetable.tshow');
 
@@ -83,10 +87,10 @@ Route::get('/bulletin/{id}/edit', [BulletinController::class, 'edit'])->name('bu
 Route::patch('/bulletin/{id}', [BulletinController::class, 'update'])->name('bulletin.update');
 Route::delete('/bulletin/{id}', [BulletinController::class, 'destroy'])->name('bulletin.destroy');
 // <--PARENTS BULLETIN-->
-Route::get('/bulletinParents',[BulletinController::class, 'indexparents']);
+Route::get('/bulletinParents', [BulletinController::class, 'indexparents'])->name('indexparents');
 Route::get('/viewbulletinParents/{id}', [BulletinController::class, 'showparents'])->name('viewbulletinParents');
 // <--TEACHER BULLETIN-->
-Route::get('/bulletinTeachers', [BulletinController::class, 'indexteacher']);
+Route::get('/bulletinTeachers', [BulletinController::class, 'indexteacher'])->name('indexteacher');
 Route::get('/viewbulletinTeacher/{id}', [BulletinController::class, 'showteacher'])->name('bulletin.viewteacher');
 Route::resource('/bulletin', BulletinController::class);
 
